@@ -1,6 +1,6 @@
 #ifdef _DEBUG
-	#define NDEBUG
+  #define NDEBUG
 #else
-	#undef NDEBUG
+  #undef NDEBUG
 #endif
 #include <assert.h>

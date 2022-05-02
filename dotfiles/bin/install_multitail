@@ -1,0 +1,140 @@
+#!/usr/bin/env bash
+################################################################### SETUP ########################################################################
+if ! _SCRIPT_DIR="$(get_script_dir "${BASH_SOURCE[0]}")"; then echo "Error while running: _SCRIPT_DIR=\"\$(get_script_dir \"${BASH_SOURCE[0]}\")\"" && exit 1; fi
+set -o errexit -o errtrace -o nounset
+##################################################################################################################################################
+
+################################################################### USAGE ########################################################################
+_SCRIPT_NAME="$(basename "$0")"
+
+function _usage() {
+  local SYNOP_INDENT
+  SYNOP_INDENT="$(head -c "$(echo -n "${_SCRIPT_NAME}" | wc -c)" </dev/zero | tr '\0' " ")"
+
+  cat <<EOF
+NAME
+       ${_SCRIPT_NAME}
+
+SYNOPSIS
+       ${_SCRIPT_NAME} [--debug-log | --with-debug-log-install] [--no-clean] [--temp | --uninstall]
+       ${SYNOP_INDENT} [--help] [--debug] [--verbose]
+
+EXAMPLES
+       ${_SCRIPT_NAME}
+EOF
+}
+##################################################################################################################################################
+
+################################################################# SCRIPTARGS #####################################################################
+while test $# -gt 0; do
+  case "$1" in
+    -h | --help)
+      _usage
+      exit 0
+      ;;
+    --debug)
+      export debug_mode=true
+      shift
+      ;;
+    --verbose)
+      export verbose=true
+      shift
+      ;;
+    --debug-log)
+      debug_log=true
+      no_clean=false
+      shift
+      ;;
+    --no-clean)
+      no_clean=true
+      shift
+      ;;
+    --temp)
+      temp=true
+      shift
+      ;;
+    --uninstall)
+      uninstall=true
+      shift
+      ;;
+    --with-debug-log-install)
+      with_debug_log_install=true
+      no_clean=false
+      shift
+      ;;
+    *)
+      echo "Unknown option: $1"
+      _usage
+      exit 1
+      ;;
+  esac
+done
+##################################################################################################################################################
+
+function run_make() {
+  echo "make $*"
+  echo "--------------------------------------------------------------"
+  make "$@"
+}
+
+function maybe_clean() {
+  if test "${no_clean-}" = "true"; then
+    return 0
+  fi
+
+  run_make clean
+}
+
+function set_debug_log_env_var() {
+  # bashsupport disable=BP2001
+  export DEBUG='-D_DEBUG'
+}
+
+function install_debug_log_version() {
+  run_make clean
+  set_debug_log_env_var
+  run_make multitail
+  cp -fv multitail "$(brew --prefix)/bin/multitail_debug"
+  run_make clean
+}
+
+function install_temp() {
+  local DESTDIR
+
+  DESTDIR="$(pwd)/tmp"
+  mkdir -pv "${DESTDIR}$(brew --prefix)/bin" "${DESTDIR}$(brew --prefix)/share/man/man1" "${DESTDIR}$(brew --prefix)/etc" "${DESTDIR}$(brew --prefix)/share/doc"
+
+  DESTDIR="$DESTDIR" run_make install
+  maybe_clean
+}
+
+function uninstall() {
+  run_make uninstall
+}
+
+function main() {
+  cd "${_SCRIPT_DIR}/../.."
+
+  if test "${debug_log-}" = "true"; then
+    set_debug_log_env_var
+  fi
+
+  if test "${temp-}" = "true"; then
+    maybe_clean
+    install_temp
+  elif test "${uninstall-}" = "true"; then
+    uninstall
+  elif test "${debug_log-}" = "true"; then
+    install_debug_log_version
+  else
+    maybe_clean
+    run_make install
+    if test "${with_debug_log_install-}" = "true"; then
+      install_debug_log_version
+    else
+      maybe_clean
+    fi
+  fi
+}
+
+main "$@"
