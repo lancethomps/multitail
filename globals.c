@@ -33,7 +33,7 @@ const char *F1 = "For help at any time press F1.";
 int *n_win_per_col = NULL;
 int *vertical_split = NULL;
 color_scheme *cschemes = NULL;
-const char *version_str = " --*- multitail " VERSION " (C) 2003-2019 by folkert@vanheusden.com -*--";
+const char *version_str = VERSION;
 conversion *conversions = NULL;
 keybinding *keybindings = NULL;
 pars_per_file *ppf = NULL;
@@ -49,6 +49,12 @@ char *global_find = NULL;
 int terminal_main_index = -1;
 int default_color_scheme = -1;
 int max_y, max_x;
+int colls_sm = 50;
+int colls_md = 100;
+int colls_lg = 150;
+int lines_sm = 20;
+int lines_md = 40;
+int lines_lg = 60;
 int min_n_bufferlines = -1;
 int mode_statusline = 1;
 int n_children = 0;
@@ -60,7 +66,7 @@ int n_splitlines = 0;
 int nfd = 0;
 int update_interval = 0;
 int n_colors_defined = 0;
-int check_for_mail = 5;	/* check for mail every 5 seconds */
+int check_for_mail = 5;  /* check for mail every 5 seconds */
 int default_maxnlines = 0;
 int default_maxbytes = 0;
 int popup_refresh_interval = 5; /* every 5 seconds */
@@ -84,7 +90,7 @@ dtime_t msf_last_check = 0;
 dtime_t mt_started;
 
 pid_t children_list[MAX_N_SPAWNED_PROCESSES];
-pid_t tail_proc = 0;	/* process used by checker-proc */
+pid_t tail_proc = 0;  /* process used by checker-proc */
 struct stat64 msf_info;
 term_t term_type = TERM_IGNORE;
 myattr_t markerline_attrs = { -1, -1 };
@@ -110,7 +116,7 @@ chtype box_top_side=0;
 beeb_t beep_method = BEEP_BEEP;
 double beep_popup_length = 0.0;
 
-char afs = 0;	/* abbreviate filesize */
+char afs = 0;  /* abbreviate filesize */
 char allow_8bit = 0; /* allow 8 bits ascii*/
 char banner = 1;
 char bright_colors = 0;
@@ -121,7 +127,7 @@ char mail = 0;
 char no_linewrap = 0;
 char prev_term_char = -1;
 char show_subwindow_id = 0;
-char tab_width = 4;		/* some people use 8 */
+char tab_width = 4;    /* some people use 8 */
 char terminal_changed = 0;
 char timestamp_in_markerline = 0;
 char use_colors = 0;
@@ -167,10 +173,10 @@ char *facilities[24] = { "kern", "user", "mail", "daemon", "auth", "syslog", "lp
 
 void set_do_refresh(char val)
 {
-	do_refresh = val;
+  do_refresh = val;
 }
 
 char get_do_refresh()
 {
-	return do_refresh;
+  return do_refresh;
 }

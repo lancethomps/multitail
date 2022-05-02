@@ -80,68 +80,68 @@ int get_pty_and_fork(int *fd_master, int *fd_slave)
 {
 #if defined(__FreeBSD__) || defined(linux) || defined(__OpenBSD__) || defined(__NetBSD__) || defined(__APPLE__) || defined(__CYGWIN__) || defined(__GNU__) || defined(__GLIBC__) || defined(__minix)
 
-	if (openpty(fd_master, fd_slave, NULL, NULL, NULL) == -1)
-	{
-		error_exit(TRUE, FALSE, "openpty() failed.\n");
-		return -1;
-	}
+  if (openpty(fd_master, fd_slave, NULL, NULL, NULL) == -1)
+  {
+    error_exit(TRUE, FALSE, "openpty() failed.\n");
+    return -1;
+  }
 
-	return fork();
+  return fork();
 
 #elif defined(sun) || defined(__sun) || defined(AIX) || defined(_HPUX_SOURCE) || defined(OSF1) || defined(scoos)
 
-	/*
-	 * This code is used e.g. on Solaris 2.x.  (Note that Solaris 2.3
-	 * also has bsd-style ptys, but they simply do not work.)
-	 */
-	int ptm;
-	char *pts;
-	pid_t pid;
+  /*
+   * This code is used e.g. on Solaris 2.x.  (Note that Solaris 2.3
+   * also has bsd-style ptys, but they simply do not work.)
+   */
+  int ptm;
+  char *pts;
+  pid_t pid;
 #if defined(AIX)
-	char *multiplexer = "/dev/ptc";
+  char *multiplexer = "/dev/ptc";
 #else
-	char *multiplexer = "/dev/ptmx";
+  char *multiplexer = "/dev/ptmx";
 #endif
 
-	ptm = myopen(multiplexer, O_RDWR | O_NOCTTY);
-	if (ptm < 0) {
-		error_exit(TRUE, FALSE, "Error opening %s.\n", multiplexer);
-		return -1;
-	}
-	*fd_master = ptm;
+  ptm = myopen(multiplexer, O_RDWR | O_NOCTTY);
+  if (ptm < 0) {
+    error_exit(TRUE, FALSE, "Error opening %s.\n", multiplexer);
+    return -1;
+  }
+  *fd_master = ptm;
 
-	pid = fork();
-	if (pid == 0)
-	{
-		if (grantpt(ptm) < 0) error_exit(TRUE, FALSE, "grantpt() failed.\n");
-		if (unlockpt(ptm) < 0) error_exit(TRUE, FALSE, "unlockpt() failed.\n");
-		setsid(); /* lose old controlling terminal (FvH) */
-		pts = ptsname(ptm);
-		if (pts == NULL) error_exit(TRUE, FALSE, "Slave pty side name could not be obtained.\n");
+  pid = fork();
+  if (pid == 0)
+  {
+    if (grantpt(ptm) < 0) error_exit(TRUE, FALSE, "grantpt() failed.\n");
+    if (unlockpt(ptm) < 0) error_exit(TRUE, FALSE, "unlockpt() failed.\n");
+    setsid(); /* lose old controlling terminal (FvH) */
+    pts = ptsname(ptm);
+    if (pts == NULL) error_exit(TRUE, FALSE, "Slave pty side name could not be obtained.\n");
 
-		/* Open the slave side. */
-		*fd_slave = myopen(pts, O_RDWR | O_NOCTTY);
-		if (*fd_slave < 0) error_exit(TRUE, FALSE, "Problem opening slave-side of pseudo tty (file '%s').\n", pts);
+    /* Open the slave side. */
+    *fd_slave = myopen(pts, O_RDWR | O_NOCTTY);
+    if (*fd_slave < 0) error_exit(TRUE, FALSE, "Problem opening slave-side of pseudo tty (file '%s').\n", pts);
 
 #if !defined(AIX) && !defined(scoos)
-		/* Push the appropriate streams modules, as described in Solaris pts(7). */
-		if (ioctl(*fd_slave, I_PUSH, "ptem") < 0) error_exit(TRUE, FALSE, "ioctl I_PUSH ptem failed.\n");
-		if (ioctl(*fd_slave, I_PUSH, "ldterm") < 0) error_exit(TRUE, FALSE, "ioctl I_PUSH ldterm failed.\n");
-		(void)ioctl(*fd_slave, I_PUSH, "ttcompat"); /* not on HP-UX? */
+    /* Push the appropriate streams modules, as described in Solaris pts(7). */
+    if (ioctl(*fd_slave, I_PUSH, "ptem") < 0) error_exit(TRUE, FALSE, "ioctl I_PUSH ptem failed.\n");
+    if (ioctl(*fd_slave, I_PUSH, "ldterm") < 0) error_exit(TRUE, FALSE, "ioctl I_PUSH ldterm failed.\n");
+    (void)ioctl(*fd_slave, I_PUSH, "ttcompat"); /* not on HP-UX? */
 #endif
-	}
+  }
 
-	return pid;
+  return pid;
 
 #elif defined(IRIX) || defined(IRIX64)
 
-	char *line = _getpty(fd_master, O_RDWR | O_NDELAY, 0600, 0);
-	if (line == NULL) error_exit(TRUE, FALSE, "_getpy() failed.\n");
+  char *line = _getpty(fd_master, O_RDWR | O_NDELAY, 0600, 0);
+  if (line == NULL) error_exit(TRUE, FALSE, "_getpy() failed.\n");
 
-	*fd_slave = myopen(line, O_RDWR);
-	if (*fd_slave < 0) error_exit(TRUE, FALSE, "Error while openening file %s.\n", line);
+  *fd_slave = myopen(line, O_RDWR);
+  if (*fd_slave < 0) error_exit(TRUE, FALSE, "Error while openening file %s.\n", line);
 
-	return fork();
+  return fork();
 
 #else
 

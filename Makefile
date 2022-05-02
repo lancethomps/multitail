@@ -1,29 +1,36 @@
+include Makefile.common
 include version
 
 PLATFORM:=$(shell uname)
 CPPFLAGS:=$(shell pkg-config --cflags ncurses)
 NCURSES_LIB:=$(shell pkg-config --libs ncurses)
-DEBUG:=#XXX -g -D_DEBUG ###-pg -Wpedantic ## -pg #-fprofile-arcs
+DEBUG?=#XXX -g -D_DEBUG ###-pg -Wpedantic ## -pg #-fprofile-arcs
 # pkg-config --libs --cflags ncurses
 # -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -lncurses -ltinfo
 
 UTF8_SUPPORT:=yes
-DESTDIR=
-PREFIX=/usr/local
+DESTDIR?=
+PREFIX:=$(shell brew --prefix)
+
 BINDIR=$(PREFIX)/bin
 SHAREDIR=$(PREFIX)/share
 MANDIR=$(SHAREDIR)/man
 MAN1DIR=$(MANDIR)/man1
 DOCDIR=$(SHAREDIR)/doc/multitail-$(VERSION)
 
-SYSCONFDIR=/etc
+SYSCONFDIR=$(PREFIX)/etc
 CONFIG_FILE=$(SYSCONFDIR)/multitail.conf
+INSTALLED_BIN_FILE=$(DESTDIR)$(PREFIX)/bin/multitail
+INSTALLED_CONFIG_FILE=$(DESTDIR)$(CONFIG_FILE)
+INSTALLED_MAN_FILE=$(DESTDIR)$(PREFIX)/share/man/man1/multitail.1
+INSTALLED_DOCS_DIR=$(DESTDIR)$(PREFIX)/share/doc/multitail-$(VERSION)
+INSTALLED_FILES="$(INSTALLED_BIN_FILE)" "$(INSTALLED_MAN_FILE)" "$(INSTALLED_CONFIG_FILE)" "$(INSTALLED_DOCS_DIR)/"
 CONFIG_DIR=$(SYSCONFDIR)/multitail
 
 INSTALL = install
 INSTALL_DATA = $(INSTALL) -m 0644
 INSTALL_EXEC = $(INSTALL) -m 0755
-INSTALL_DIR = $(INSTALL) -m 0755 -d
+INSTALL_DIR = mkdir -pv
 
 CC?=gcc
 CFLAGS+=-Wall -Wno-unused-parameter -funsigned-char -O3
@@ -48,8 +55,7 @@ endif
 OBJS:=utils.o mt.o error.o my_pty.o term.o scrollback.o help.o mem.o cv.o selbox.o stripstring.o color.o misc.o ui.o exec.o diff.o config.o cmdline.o globals.o history.o clipboard.o
 DEPENDS:= $(OBJS:%.o=%.d)
 
-
-.PHONY: all check install uninstall coverity clean distclean package thanks
+.PHONY: all check install uninstall coverity clean distclean package debug
 all: multitail
 
 multitail: $(OBJS)
@@ -70,7 +76,7 @@ install: multitail
 	### YOURSELF WITH THE NEW FILE
 	#
 	$(INSTALL_DIR) $(DESTDIR)$(CONFIG_DIR)
-	$(INSTALL_DATA) multitail.conf $(DESTDIR)$(CONFIG_FILE).new
+	$(INSTALL_DATA) multitail.conf $(DESTDIR)$(CONFIG_FILE)
 	#
 	# There's a mailinglist!
 	# Send an e-mail to minimalist@vanheusden.com with in the subject
@@ -81,6 +87,7 @@ install: multitail
 	#
 	# How do YOU use multitail? Please send me an e-mail so that I can
 	# update the examples page.
+	ls -oAhFO $(INSTALLED_FILES)
 
 uninstall: clean
 	rm -f $(DESTDIR)$(BINDIR)/multitail
@@ -88,9 +95,10 @@ uninstall: clean
 	rm -f $(DESTDIR)$(CONFIG_FILE)
 	rm -rf $(DESTDIR)$(CONFIG_DIR)
 	rm -rf $(DESTDIR)$(DOCDIR)
+	rm -rfv $(INSTALLED_FILES)
 
 clean:
-	rm -f $(OBJS) multitail core gmon.out *.da ccmultitail
+	rm -f $(OBJS) multitail core gmon.out *.da *.d ccmultitail
 
 package: clean
 	# source package
@@ -99,15 +107,6 @@ package: clean
 	cp -a *.conf *.c *.h multitail.1 manual*.html Makefile makefile.* AUTHORS INSTALL README.md version multitail-$(VERSION)
 	tar czf multitail-$(VERSION).tgz multitail-$(VERSION)
 	rm -rf multitail-$(VERSION)
-
-thanks:
-	echo Automatic thank you e-mail for multitail $(VERSION) on a `uname -a` | mail -s "multitail $(VERSION)" folkert@vanheusden.com
-	echo Is your company using MultiTail and you would like to be
-	echo mentioned on http://www.vanheusden.com/multitail/usedby.html ?
-	echo Then please send me a logo -not too big- and a link and I will
-	echo add it to that page.
-	echo
-	echo Oh, blatant plug: http://keetweej.vanheusden.com/wishlist.html
 
 ### cppcheck: unusedFunction check can't be used with '-j' option. Disabling unusedFunction check.
 check:
@@ -128,6 +127,15 @@ coverity:
 
 distclean: clean
 	rm -rf cov-int cppcheck cppcheck.xml *.d *~ tags
+
+debug:
+	@echo "CONFIG_FILE=$(CONFIG_FILE)"
+	@echo "DEBUG=$(DEBUG)"
+	@echo "INSTALLED_BIN_FILE=$(INSTALLED_BIN_FILE)"
+	@echo "INSTALLED_DOCS_DIR=$(INSTALLED_DOCS_DIR)"
+	@echo "INSTALLED_FILES=$(INSTALLED_FILES)"
+	@echo "INSTALLED_MAN_FILE=$(INSTALLED_MAN_FILE)"
+	@echo "OBJS=$(OBJS)"
 
 # include dependency files for any other rule:
 ifneq ($(filter-out clean distclean,$(MAKECMDGOALS)),)
