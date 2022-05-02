@@ -1446,7 +1446,7 @@ void usage(void)
 
 	help_header("configuration file");
 #ifndef S_SPLINT_S
-	format_help("-F file", NULL, "use 'file' as configuration file (instead of " CONFIG_FILE ")");
+	format_help("-F file", "--config file", "use 'file' as configuration file (instead of " CONFIG_FILE ")");
 	format_help(NULL, "--no-load-global-config", "do not read " CONFIG_FILE "");
 #endif
 	format_help("-o config_file_parameter", NULL, "do a setting which would normally be set in the configuration file");

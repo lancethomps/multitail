@@ -1169,7 +1169,7 @@ void do_commandline(int argc, char *argv[])
 
 			usage();
 
-			exit(1);
+			exit(0);
 		}
 	}
 
