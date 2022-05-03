@@ -2876,14 +2876,15 @@ void draw_marker_line(NEWWIN *win, char *string, proginfo *marker_type)
 void search_in_all_windows(void)
 {
 	char *find;
-	NEWWIN *mywin = create_popup(8, 44);
+	int win_colls = colls_med;
+	NEWWIN *mywin = create_popup(8, win_colls);
 	mybool_t case_insensitive = re_case_insensitive;
 
 	win_header(mywin, "Find");
 
 	mvwprintw(mywin -> win, 3, 2, "^u empty line, ^g abort");
 
-	find = edit_string(mywin, 5, 2, 40, 80, 0, reuse_searchstring?global_find:NULL, HELP_SEARCH_IN_ALL_WINDOWS, -1, &search_h, &case_insensitive);
+	find = edit_string(mywin, 5, 2, win_colls - 4, 80, 0, reuse_searchstring?global_find:NULL, HELP_SEARCH_IN_ALL_WINDOWS, -1, &search_h, &case_insensitive);
 	delete_popup(mywin);
 
 	myfree(global_find);
@@ -2896,11 +2897,12 @@ void search_in_all_windows(void)
 void highlight_in_all_windows(void)
 {
 	char *find;
-	NEWWIN *mywin = create_popup(5, 44);
+	int win_colls = colls_med;
+	NEWWIN *mywin = create_popup(5, win_colls);
 	mybool_t case_insensitive = re_case_insensitive;
 
 	win_header(mywin, "Global highlight");
-	find = edit_string(mywin, 3, 2, 40, 80, 0, reuse_searchstring?global_highlight_str:NULL, HELP_HIGHLIGHT_IN_ALL_WINDOWS, -1, &search_h, &case_insensitive);
+	find = edit_string(mywin, 3, 2, win_colls - 4, 80, 0, reuse_searchstring?global_highlight_str:NULL, HELP_HIGHLIGHT_IN_ALL_WINDOWS, -1, &search_h, &case_insensitive);
 	delete_popup(mywin);
 
 	if (global_highlight_str)

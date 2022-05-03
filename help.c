@@ -23,57 +23,57 @@ char *help_main_menu[] = {
 		"In the main menu one can do add/delete windows, move them, swap them, set regular expressions, set color(-schemes) etc.",
 		"",
 		"One can press the following keys:",
-		" ^q^            quit the program",
-		" ^F1^           this help",
-		" ^/^            search in all windows",
-		" ^shift^ + ^/^    highlight in all windows",
-		" ^b^            scroll back",
-		" ^B^            scroll back in ALL windows merged into one window",
-		" ^I^            toggle case sensitivity for searches",
-		" ^a^            add a new window or add another file/ program to an existing window",
-		" ^d^            delete a window (or a file/program from a window)",
-		" ^s^            swap the location of 2 windows",
-		" ^e^            enter/edit regular expressions",
-		" ^f^            enter/edit in line filter regexps",
-		" ^c^            set/change colors (only works if your terminal supports colors)",
-		" ^C^            edit the r/g/b components of a color",
-		" ^b^            scrollback in the buffer of a window",
-		" ^v^            toggle vertical split",
-		" ^0^...^9^        set a mark in a window so that you can easily see what has changed since the last time you looked",
-		" ^R^            restart a window",
-		" ^ctrl^ + ^v^     select conversion scheme(s)",
-		" ^ctrl^ + ^t^     toggle subwindow before lines",
-		" ^Y^            send a signal to a window (for commands)",
-		" ^y^            set linewrap",
-		" ^o^            wipe (clear) a window",
-		" ^O^            wipe all windows",
-		" ^T^            truncate a logfile",
-		" ^g^            make screendump",
-		" ^r^            redraw screen",
-		" ^I^            toggle case sensitivity for searches",
-		" ^l^            list keybindings",
-		" ^i^            info",
-		" ^t^            statistics",
-		" ^j^            set window sizes",
-		" ^z^            hide/unhide a window",
-		" ^u^            hide all windows but the one selected",
-		" ^U^            unhide all windows",
-		" ^w^            write a script which starts multitail with the current settings (the files that are monitored, regular expressions, etc.)",
-		" ^n^            clear the buffer of a window",
-		" ^N^            clear all buffers of all windows",
-		" ^m^            set the size of a buffer",
-		" ^k^            enter a (limited) terminal-mode",
-		" ^p^            pause all windows",
-		" ^P^            (un-)pause one window",
+		" *_q_*            quit the program",
+		" *_F1_*           this help",
+		" *_/_*            search in all windows",
+		" *_shift_* + *_/_*    highlight in all windows",
+		" *_b_*            scroll back",
+		" *_B_*            scroll back in ALL windows merged into one window",
+		" *_I_*            toggle case sensitivity for searches",
+		" *_a_*            add a new window or add another file/ program to an existing window",
+		" *_d_*            delete a window (or a file/program from a window)",
+		" *_s_*            swap the location of 2 windows",
+		" *_e_*            enter/edit regular expressions",
+		" *_f_*            enter/edit in line filter regexps",
+		" *_c_*            set/change colors (only works if your terminal supports colors)",
+		" *_C_*            edit the r/g/b components of a color",
+		" *_b_*            scrollback in the buffer of a window",
+		" *_v_*            toggle vertical split",
+		" *_0_*...*_9_*        set a mark in a window so that you can easily see what has changed since the last time you looked",
+		" *_R_*            restart a window",
+		" *_ctrl_* + *_v_*     select conversion scheme(s)",
+		" *_ctrl_* + *_t_*     toggle subwindow before lines",
+		" *_Y_*            send a signal to a window (for commands)",
+		" *_y_*            set linewrap",
+		" *_o_*            wipe (clear) a window",
+		" *_O_*            wipe all windows",
+		" *_T_*            truncate a logfile",
+		" *_g_*            make screendump",
+		" *_r_*            redraw screen",
+		" *_I_*            toggle case sensitivity for searches",
+		" *_l_*            list keybindings",
+		" *_i_*            info",
+		" *_t_*            statistics",
+		" *_j_*            set window sizes",
+		" *_z_*            hide/unhide a window",
+		" *_u_*            hide all windows but the one selected",
+		" *_U_*            unhide all windows",
+		" *_w_*            write a script which starts multitail with the current settings (the files that are monitored, regular expressions, etc.)",
+		" *_n_*            clear the buffer of a window",
+		" *_N_*            clear all buffers of all windows",
+		" *_m_*            set the size of a buffer",
+		" *_k_*            enter a (limited) terminal-mode",
+		" *_p_*            pause all windows",
+		" *_P_*            (un-)pause one window",
 		NULL
 	};
 
 char *help_add_file_or_cmd[] = {
 		"MultiTail lets you display logfiles and the output of commands. At this point you can select",
 		"whether you want to add to the new window a file or the output of a command.",
-		" ^f^     selects a file",
-		" ^c^     selects a commands",
-		" ^ctrl+g^     abort",
+		" *_f_*     selects a file",
+		" *_c_*     selects a commands",
+		" *_ctrl+g_*     abort",
 		"",
 		"Commands are executed in their own virtual tty to force line-buffered output. They are executed by",
 		"starting up */bin/sh -c* with as parameter the command you'll enter here.",
@@ -84,9 +84,9 @@ char *help_list_keybindings[] = {
 		"This screen lists the keybindings you defined in the MultiTail configurationfile which is located",
 		"in "CONFIG_FILE". The keybindings only work in the main screen.",
 		"In this screen, you can press the followking keys:",
-		" ^UP^    (cursor key UP) scroll up",
-		" ^DOWN^  (cursor key DOWN) scroll down",
-		" ^q^     abort",
+		" *_UP_*    (cursor key UP) scroll up",
+		" *_DOWN_*  (cursor key DOWN) scroll down",
+		" *_q_*     abort",
 		NULL
 	};
 
@@ -112,7 +112,7 @@ char *help_enter_cmd_to_monitor[] = {
 char *help_add_window_merge_subwin[] = {
 		"At this point there are already one or more windows on the screen. You can now indicate if",
 		"you want the new file/command to be *merged* in an existing window. Lines from the logfiles/commands",
-		"in a window are then interleaved as they are generated Enter ^y^ or ^n^ here or ^ctrl+g^ to abort.",
+		"in a window are then interleaved as they are generated Enter *_y_* or *_n_* here or *_ctrl+g_* to abort.",
 		NULL
 	};
 
@@ -120,13 +120,13 @@ char *help_add_window_select_merge_window[] = {
 		"At this point there are already one or more windows on the screen. You can now indicate if",
 		"you want the new file/command to be *merged* in an existing window. Lines from the logfiles/commands",
 		"in a window are then interleaved as they are generated",
-		"Here, select the window to merge with. Press ^ctrl+g^ to abort.",
+		"Here, select the window to merge with. Press *_ctrl+g_* to abort.",
 		NULL
 	};
 
 char *help_add_file_follow_filename[] = {
 		"Here you can select wether to follow the filename",
-		"(^y^) or the filedescriptor (^n^). When the file that",
+		"(*_y_*) or the filedescriptor (*_n_*). When the file that",
 		"you want to monitor gets, for example, \"rotated\" by *logrotate* every night, you want to select to",
 		"follow the filename here. What this means is: if the filename gets renamed (or deleted) and a new",
 		"file with the original filename is created, that new file will automatically be monitored instead of the original file.",
@@ -135,25 +135,12 @@ char *help_add_file_follow_filename[] = {
 
 char *help_ask_colors[] = {
 		"Now you can select how MultiTail colors the text it displays.",
-		" ^n^     do *not* use any coloring at all",
-		" ^s^     this option expects that you're monitoring",
-		"       a file in the syslog format, e.g: date",
-		"       hostname, program, pid, message. It uses",
-		"       the name of the program which logged the",
-		"       message to select a color",
-		" ^m^     this option evaluates the complete logged",
-		"       line to select a color",
-		" ^S^     this option lets you select a pre-defined",
-		"       color scheme. That color scheme should be",
-		"       defined in *multitail.conf* which can be",
-		"       stored in your home directory or in */etc*",
-		"       See the example file for details.",
-		" ^f^     when selecting this option, you'll be",
-		"       asked to enter the number of the field to",
-		"       use for selecting a color. You'll also be",
-		"       asked to enter the character that seperates",
-		"       each field in a line",
-		" ^ctrl+g^     abort",
+		" *_n_*     do *not* use any coloring at all",
+		" *_s_*     this option expects that you're monitoring a file in the syslog format, e.g: date hostname, program, pid, message. It uses the name of the program which logged the message to select a color",
+		" *_m_*     this option evaluates the complete logged line to select a color",
+		" *_S_*     this option lets you select a pre-defined color scheme. That color scheme should be defined in *multitail.conf* which can be stored in your home directory or in */etc* See the example file for details.",
+		" *_f_*     when selecting this option, you'll be asked to enter the number of the field to use for selecting a color. You'll also be asked to enter the character that separates each field in a line",
+		" *_ctrl+g_*     abort",
 		"",
 		"Using colors only works if your terminal supports this.",
 		NULL,
@@ -182,7 +169,7 @@ char *help_ask_colors_select_scheme[] = {
 		"which can be located in your homedirectory and in */etc*.",
 		"In this configuration file you select using regular expressions what color to use for what",
 		"patterns. See the example *multitail.conf* which should've",
-		"been included with the MultiTail when you installed it. Press ^ctrl+g^ to abort.",
+		"been included with the MultiTail when you installed it. Press *_ctrl+g_* to abort.",
 		NULL
 	};
 
@@ -197,9 +184,9 @@ char *help_add_window_repeat_interval[] = {
 
 char *help_add_file_display_diff[] = {
 		"In some situations (for example: when monitoring the output of '*netstat -t tcp*') you may only",
-		"want to see the difference between each run. In that case press ^y^ here. To see all output every time, press ^n^. Press ^ctrl+g^ to abort.",
+		"want to see the difference between each run. In that case press *_y_* here. To see all output every time, press *_n_*. Press *_ctrl+g_* to abort.",
 		"",
-		"On the commandline you can select this behaviour with the ^-R^ switch.",
+		"On the commandline you can select this behaviour with the *_-R_* switch.",
 		NULL
 	};
 
@@ -209,27 +196,25 @@ char *help_enter_regexp_select_window[] = {
 		"In this menu one can enter/edit/delete regular expressions which are used to filter what is",
 		"displayed in a window."
 		"First you need to select the main-window. If more then one file/command is displayed in a window,",
-		"you'll get another selection box after this one where you can select a \"sub-window\". Press ^ctrl+g^ to abort.",
+		"you'll get another selection box after this one where you can select a \"sub-window\". Press *_ctrl+g_* to abort.",
 		NULL
 	};
 
 char *help_enter_regexp_select_subwindow[] = {
 		"The window you selected contains the output of more then one file/command. You now have to",
-		"select the \"sub-window\" to edit the regular expressions for. Press ^ctrl+g^ to abort.",
+		"select the \"sub-window\" to edit the regular expressions for. Press *_ctrl+g_* to abort.",
 		NULL
 	};
 
 char *help_regexp_menu[] = {
 		"This menu has a couple of options for editing regexps ('regular expressions'):",
-		" ^a^     add a new regexp (one can have a maximum",
-		"       of 10 per file/command)",
-		" ^e^     edit an existing regexp",
-		" ^d^     delete one of the existing regexps",
-		" ^D^     move an entry down, this also changes",
-		"       priority of this reg.exp.",
-		" ^U^     move an entry up",
-		" ^r^     reset counter",
-		" ^q^/^x^   leave this menu",
+		" *_a_*     add a new regexp (one can have a maximum of 10 per file/command)",
+		" *_e_*     edit an existing regexp",
+		" *_d_*     delete one of the existing regexps",
+		" *_D_*     move an entry down, this also changes priority of this reg.exp.",
+		" *_U_*     move an entry up",
+		" *_r_*     reset counter",
+		" *_q_*/*_x_*   leave this menu",
 		NULL
 	};
 
@@ -243,26 +228,19 @@ char *help_enter_regexp[] = {
 
 char *help_negate_regexp[] = {
 		"Here you select how to handle the outcome of the regular expression processing: should it match",
-		"when the regexp matches, or should it match when the regexp does *not* match? Press ^ctrl+g^ to abort.",
+		"when the regexp matches, or should it match when the regexp does *not* match? Press *_ctrl+g_* to abort.",
 		NULL
 	};
 
 char *help_regexp_usage[] = {
 		"Here you select what to do when a regexp matches.",
-		" ^m^     show the line if the regexp matches. If",
-		"       selected to \"negate\" the outcome of the",
-		"       regexp, ^m^ tells MultiTail to only display",
-		"       the line if the regexp does *not* match.",
-		" ^c^     if the regexp matches (see also ^m^),"
-		"       the line is displayed and colored",
-		" ^C^     the lines are always printed but if the",
-		"       regexp matches, colors are used",
-		" ^B^     if a regexp matches for a line, a bell-",
-		"       sound is produced",
-		" ^b^     combination of ^C^ and ^B^",
-		" ^x^     if a regexp matches, a command is",
-		"       executed",
-		" ^ctrl+g^     abort",
+		" *_m_*     show the line if the regexp matches. If selected to \"negate\" the outcome of the regexp, *_m_* tells MultiTail to only display the line if the regexp does *not* match.",
+		" *_c_*     if the regexp matches (see also *_m_*), the line is displayed and colored",
+		" *_C_*     the lines are always printed but if the regexp matches, colors are used",
+		" *_B_*     if a regexp matches for a line, a bell-sound is produced",
+		" *_b_*     combination of *_C_* and *_B_*",
+		" *_x_*     if a regexp matches, a command is executed",
+		" *_ctrl+g_*     abort",
 		NULL
 	};
 
@@ -283,42 +261,42 @@ char *help_compile_regexp_failed[] = {
 char *help_delete_select_window[] = {
 		"You've indicated that you want to delete a window. Select the window that you want to remove.",
 		"If a window consists of more then one logfile or command, you'll be asked next if you want to",
-		"remove the complete window including all \"subwindows\" or just the first one (the first file/command). Press ^ctrl+g^ to abort.",
+		"remove the complete window including all \"subwindows\" or just the first one (the first file/command). Press *_ctrl+g_* to abort.",
 		NULL
 	};
 
 char *help_delete_window_delete_all_subwin[] = {
 		"This window contains more then one logfile / command. Here you select if you want to remove all",
-		"\"subwindows\" or just the first file/command. Press ^ctrl+g^ to abort.",
+		"\"subwindows\" or just the first file/command. Press *_ctrl+g_* to abort.",
 		NULL
 	};
 
 char *help_delete_select_subwindow[] = {
-		"This window contains more then one logfile / command. Select the file / command you wish to remove from this window. Press ^ctrl+g^ to abort.",
+		"This window contains more then one logfile / command. Select the file / command you wish to remove from this window. Press *_ctrl+g_* to abort.",
 		NULL
 	};
 
 char *help_swap_win1[] = {
 		"You have indicated that you want to swap the location (on the screen) of 2 windows.",
-		"Please select the first window. Press ^ctrl+g^ to abort.",
+		"Please select the first window. Press *_ctrl+g_* to abort.",
 		NULL
 	};
 
 char *help_swap_win2[] = {
 		"You have indicated that you want to swap the location (on the screen) of 2 windows.",
-		"Please select the second window. Press ^ctrl+g^ to abort.",
+		"Please select the second window. Press *_ctrl+g_* to abort.",
 		NULL
 	};
 
 char *help_toggle_colors_select_window[] = {
 		"You've indicated that you want to change the colors of a window. Please select that window.",
 		"If a window consists of more then one logfile or command, you'll be asked to select the file or",
-		"command in that window to change the colors for. Press ^ctrl+g^ to abort.",
+		"command in that window to change the colors for. Press *_ctrl+g_* to abort.",
 		NULL
 	};
 
 char *help_toggle_colors_select_subwindow[] = {
-		"This window contains more then one logfile / command. Select the file / command you wish to change the colors for. Press ^ctrl+g^ to abort.",
+		"This window contains more then one logfile / command. Select the file / command you wish to change the colors for. Press *_ctrl+g_* to abort.",
 		NULL
 	};
 
@@ -331,8 +309,8 @@ char *help_failed_to_start_tail[] = {
 char *help_window_closed[] = {
 		"A window has closed. This happens when you're monitoring the output of an external program. That",
 		"program has died and when that happens the window is automatically closed.",
-		"On the commandline you can set with the ^-r^ or the ^-R^ that a command should be repeated when it",
-		"exits. This behaviour can also be set when you add a window by pressing the ^a^-key in the main menu.",
+		"On the commandline you can set with the *_-r_* or the *_-R_* that a command should be repeated when it",
+		"exits. This behaviour can also be set when you add a window by pressing the *_a_*-key in the main menu.",
 		NULL
 	};
 
@@ -346,8 +324,8 @@ char *help_write_script[] = {
 
 char *help_statistics[] = {
 		"In this menu one can select the window or sub- window to display the statistics off.",
-		" ^r^     reset ALL counters for ALL windows",
-		" ^ctrl+g^     exit window",
+		" *_r_*     reset ALL counters for ALL windows",
+		" *_ctrl+g_*     exit window",
 		NULL,
 	};
 
@@ -357,27 +335,25 @@ char *help_statistics_popup[] = {
 		" *average*             average interval",
 		" *standard deviation*  speaks for itself",
 		"",
-		" ^r^     reset the counters for this window",
-		" ^ctrl+g^     exit window",
+		" *_r_*     reset the counters for this window",
+		" *_ctrl+g_*     exit window",
 		NULL
 	};
 
 char *help_set_buffering[] = {
 		"In this window you can control the buffering for each window. The first question lets you select on what window you want to set the buffering",
 		"parameters:"
-		" ^a^     set on all windows",
-		" ^o^     set on one window",
-		"Press ^ctrl+g^ to abort.",
+		" *_a_*     set on all windows",
+		" *_o_*     set on one window",
+		"Press *_ctrl+g_* to abort.",
 		NULL
 	};
 
 char *help_set_buffering_store_what[] = {
 		"Here you set what should be buffered.",
-		" ^a^     buffer all lines that are monitored",
-		" ^m^     only buffer the lines that match the",
-		"       configured regular expressions. If you have",
-		"       not set any regexps, everything is stored.",
-		"Press ^ctrl+g^ to abort.",
+		" *_a_*     buffer all lines that are monitored",
+		" *_m_*     only buffer the lines that match the configured regular expressions. If you have not set any regexps, everything is stored.",
+		"Press *_ctrl+g_* to abort.",
 		NULL
 	};
 
@@ -387,21 +363,21 @@ char *help_enter_number_of_lines_to_store[] = {
 	};
 
 char *help_set_buffering_select_window[] = {
-		"Here you select the window on which you want to set the buffer limits. Press ^ctrl+g^ to abort.",
+		"Here you select the window on which you want to set the buffer limits. Press *_ctrl+g_* to abort.",
 		NULL
 	};
 
 char *help_hide_window[] = {
 		"Select the window that you want to (un-)hide. When a window is hidden, it is not displayed: logging",
-		"and filtering continues as usual. Press ^ctrl+g^ to abort.",
+		"and filtering continues as usual. Press *_ctrl+g_* to abort.",
 		NULL
 	};
 
 char *help_set_windowsizes[] = {
 		"Here you can set the sizes of windows. The width can only set for *all* windows, the height can be set for each individual window.",
-		" ^m^     manage columns: add a column, set width",
-		" ^h^     set the height for a window",
-		"Press ^ctrl+g^ to abort.",
+		" *_m_*     manage columns: add a column, set width",
+		" *_h_*     set the height for a window",
+		"Press *_ctrl+g_* to abort.",
 		NULL
 	};
 
@@ -409,13 +385,13 @@ char *help_set_window_width[] = {
 		"When setting the window width, you actually set the width of the windows on the left. So if you",
 		"set it to 20, the windows on the left are 20 characters in width. The windows on the right are",
 		"then what is left in width. Beware: one column is used for the dividing line.",
-		"This option can only be used when you've switched on \"vertical split\" in the main menu (^v^). Press enter on an empty line to abort.",
+		"This option can only be used when you've switched on \"vertical split\" in the main menu (*_v_*). Press enter on an empty line to abort.",
 		NULL
 	};
 
 char *help_set_window_height[] = {
 		"The height of a window must be at least 2 lines. That is excluding the statusline. The statusline",
-		"can be switched off using the '^-D^' commandline switch.",
+		"can be switched off using the '*_-D_*' commandline switch.",
 		"One can only set the window height if there are at least 2 windows on the screen.",
 		"When you enter '0' MultiTail will automatically set the height. The height must be either 0 or",
 		"more then one. Press enter on an empty line to abort.",
@@ -423,7 +399,7 @@ char *help_set_window_height[] = {
 	};
 
 char *help_set_window_height_select_window[] = {
-		"You're about to set the height of a window. The first step is to select the window which you want to resize. Press ^ctrl+g^ to abort.",
+		"You're about to set the height of a window. The first step is to select the window which you want to resize. Press *_ctrl+g_* to abort.",
 		NULL
 	};
 
@@ -436,33 +412,27 @@ char *help_terminal_mode_select_window[] = {
 
 char *help_scrollback_help[] = {
 		"The scrollback menu lets you scrollback in the buffer. The default size of the buffer is 100",
-		"lines. This size can be set with the ^-m^ command- line parameter or the ^m^-key in the main menu.",
-		" ^c^     set colors",
+		"lines. This size can be set with the *_-m_* command-line parameter or the *_m_*-key in the main menu.",
+		" *_c_*            set colors",
 #ifdef __APPLE__
-		" ^x^     copy contents to clipboard (pbcopy)",
+		" *_x_*            copy contents to clipboard (pbcopy)",
 #else
-		" ^x^     copy contents to X clipboard (xclip)",
+		" *_x_*            copy contents to X clipboard (xclip)",
 #endif
-		" ^f^/^/^   search for a string in the buffer",
-		" ^n^     find the next occurence",
-		" ^Y^     toggle linewrap. if linewrap is disabled,",
-		"       one can scroll left/right with the cursor-",
-		"       keys.",
-		" ^ctrl^+^t^ show (sub-)window number in front of",
-		"       each line",
-		" ^t^     show a list of window-nrs and what they",
-		"       contain. can also display statistics.",
-		" ^s^     save the buffer to a file",
-		" ^F9^/^ctrl+w^ switch to full screen mode (and back)",
-		"Press ^ctrl+g^ to abort.",
+		" *_f_*/*_/_*          search for a string in the buffer",
+		" *_n_*            find the next occurence",
+		" *_Y_*            toggle linewrap. if linewrap is disabled, one can scroll left/right with the cursor- keys.",
+		" *_ctrl_*+*_t_*       show (sub-)window number in front of each line",
+		" *_t_*            show a list of window-nrs and what they contain. can also display statistics.",
+		" *_s_*            save the buffer to a file",
+		" *_F9_*/*_ctrl+w_*    switch to full screen mode (and back)",
 		NULL
 	};
 
 char *help_scrollback_savefile[] = {
 		"Save a buffer to a file.",
-		" ^a^     write all lines to the file",
-		" ^m^     write only the lines to the file which",
-		"       match the regular expression(s) (if any)",
+		" *_a_*     write all lines to the file",
+		" *_m_*     write only the lines to the file which match the regular expression(s) (if any)",
 		NULL
 };
 
@@ -472,18 +442,17 @@ char *help_scrollback_savefile_enter_filename[] = {
 	};
 
 char *help_scrollback_no_mark[] = {
-		"You cannot scrollback in this window as it has no buffer. Press ^m^ in the main-menu to set the size of the buffer or use the ^-m^ commandline switch.",
+		"You cannot scrollback in this window as it has no buffer. Press *_m_* in the main-menu to set the size of the buffer or use the *_-m_* commandline switch.",
 		NULL
 	};
 
 char *help_scrollback_select_window[] = {
-		"Select the window in which you want to scrollback. Press ^ctrl+g^ to abort.",
+		"Select the window in which you want to scrollback. Press *_ctrl+g_* to abort.",
 		NULL
 	};
 
 char *help_scrollback_edit_search_string[] = {
-		"Enter the string to search for in the scrollback- buffer. The search-string can be a regular",
-		"expression. Press enter on an empty line to abort.",
+		"Enter the string to search for in the scrollback- buffer. The search-string can be a regular expression. Press enter on an empty line to abort.",
 		NULL
 	};
 
@@ -509,24 +478,23 @@ char *help_wipe_window[] = {
 	};
 
 char *help_select_colorschemes[] = {
-		"Move the cursor with the cursor keys to the a color scheme. Then press space to select and again",
-		"to unselect. Press enter to submit or ^g to abort.",
+		"Move the cursor with the cursor keys to the a color scheme. Then press space to select and again to unselect. Press enter to submit or ^g to abort.",
 		NULL
 	};
 
 char *help_manage_cols[] = {
-		"Press ^a^ to add a column, ^d^ to delete one and press ^e^ to set the number of windows in a column.",
+		"Press *_a_* to add a column, *_d_* to delete one and press *_e_* to set the number of windows in a column.",
 		NULL
 	};
 
 char *help_set_linewrap[] = {
 		"In this menu one can set how the wrap the text in windows.",
-		" ^l^  start at the left and cut of at the right",
-		" ^a^  try to display everything",
-		" ^r^  cut off at the left",
-		" ^s^  cut right before the syslog process name",
-		" ^S^  cut right after the syslog process name",
-		" ^o^  enter a position where to cut",
+		" *_l_*  start at the left and cut of at the right",
+		" *_a_*  try to display everything",
+		" *_r_*  cut off at the left",
+		" *_s_*  cut right before the syslog process name",
+		" *_S_*  cut right after the syslog process name",
+		" *_o_*  enter a position where to cut",
 		" Press ctrl+g to abort.",
 		NULL
 	};
@@ -547,10 +515,9 @@ char *help_redirect_failed[] = {
 	};
 
 char *help_stripper_type[] = {
-		" ^e^   filter by using a regular expression",
-		" ^r^   filter by specifying the character-range",
-		" ^c^   specify a column to strip - you'll be asked",
-		"     to enter a delimiter as well",
+		" *_e_*   filter by using a regular expression",
+		" *_r_*   filter by specifying the character-range",
+		" *_c_*   specify a column to strip - you'll be asked to enter a delimiter as well",
 		NULL
 	};
 
@@ -671,10 +638,10 @@ char *help_edit_color[] = {
 		"In this menu one can edit the values for the red, the green and the blue component of a color.",
 		"Move the '>' with the up and down cursorkeys in front of the range in which you want to enter the",
 		"value. The uppermost range being 0 upto 1000, the middle 0-255 and the lowest also 0-255 but entered in hexadecimal values.",
-		" ^r^   edit the red component",
-		" ^g^   edit the green component",
-		" ^b^   edit the blue component",
-		" ^c^   give the color a name/description",
+		" *_r_*   edit the red component",
+		" *_g_*   edit the green component",
+		" *_b_*   edit the blue component",
+		" *_c_*   give the color a name/description",
 		NULL
 	};
 
