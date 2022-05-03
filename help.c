@@ -17,100 +17,73 @@
 #include "globals.h"
 
 char *help_main_menu[] = {
-		"MultiTail lets you create one or more windows in",
-		"one terminal. In each window one can monitor one",
-		"or more logfiles and(!)/or the output of external",
-		"programs: when using multiple inputs, they get",
-		"automatically merged.",
+		"MultiTail lets you create one or more windows in one terminal. In each window one can monitor one or more logfiles",
+		"and(!)/or the output of external programs: when using multiple inputs, they get automatically merged.",
 		"",
-		"In the main menu one can do add/delete windows,",
-		"move them, swap them, set regular expressions, set",
-		"color(-schemes) etc.",
+		"In the main menu one can do add/delete windows, move them, swap them, set regular expressions, set color(-schemes) etc.",
 		"",
 		"One can press the following keys:",
-		" ^q^     quit the program",
-		" ^F1^    this help",
-		" ^/^     search in all windows",
-		" ^shift^ + ^/^  highlight in all windows",
-		" ^b^     scroll back",
-		" ^B^     scroll back in ALL windows merged into",
-		"       one window",
-		" ^I^     toggle case sensitivity for searches",
-		" ^a^     add a new window or add another file/",
-		"       program to an existing window",
-		" ^d^     delete a window (or a file/program from a",
-		"       window)",
-		" ^s^     swap the location of 2 windows",
-		" ^e^     enter/edit regular expressions",
-		" ^f^     enter/edit in line filter regexps",
-		" ^c^     set/change colors (only works if your",
-		"       terminal supports colors)",
-		" ^C^     edit the r/g/b components of a color",
-		" ^b^     scrollback in the buffer of a window",
-		" ^v^     toggle vertical split",
-		" ^0^...^9^ set a mark in a window so that you can",
-		"       easily see what has changed since the last",
-		"       time you looked",
-		" ^R^     restart a window",
-		" ^ctrl^ + ^v^  select conversion scheme(s)",
-		" ^ctrl^ + ^t^  toggle subwindow before lines",
-		" ^Y^     send a signal to a window (for commands)",
-		" ^y^     set linewrap",
-		" ^o^     wipe (clear) a window",
-		" ^O^     wipe all windows",
-		" ^T^     truncate a logfile",
-		" ^g^     make screendump",
-		" ^r^     redraw screen",
-		" ^I^     toggle case sensitivity for searches",
-		" ^l^     list keybindings",
-		" ^i^     info",
-		" ^t^     statistics",
-		" ^j^     set window sizes",
-		" ^z^     hide/unhide a window",
-		" ^u^     hide all windows but the one selected",
-		" ^U^     unhide all windows",
-		" ^w^     write a script which starts multitail",
-		"       with the current settings (the files that",
-		"       are monitored, regular expressions, etc.)",
-		" ^n^     clear the buffer of a window",
-		" ^N^     clear all buffers of all windows",
-		" ^m^     set the size of a buffer",
-		" ^k^     enter a (limited) terminal-mode",
-		" ^p^     pause all windows",
-		" ^P^     (un-)pause one window",
-		"",
-		"",
-		"",
-		"^MultiTail^ " VERSION " was written by",
-		"_folkert@vanheusden.com_.",
-		"Check: _http://www.vanheusden.com/multitail/_",
-		"for new versions.",
+		" ^q^            quit the program",
+		" ^F1^           this help",
+		" ^/^            search in all windows",
+		" ^shift^ + ^/^    highlight in all windows",
+		" ^b^            scroll back",
+		" ^B^            scroll back in ALL windows merged into one window",
+		" ^I^            toggle case sensitivity for searches",
+		" ^a^            add a new window or add another file/ program to an existing window",
+		" ^d^            delete a window (or a file/program from a window)",
+		" ^s^            swap the location of 2 windows",
+		" ^e^            enter/edit regular expressions",
+		" ^f^            enter/edit in line filter regexps",
+		" ^c^            set/change colors (only works if your terminal supports colors)",
+		" ^C^            edit the r/g/b components of a color",
+		" ^b^            scrollback in the buffer of a window",
+		" ^v^            toggle vertical split",
+		" ^0^...^9^        set a mark in a window so that you can easily see what has changed since the last time you looked",
+		" ^R^            restart a window",
+		" ^ctrl^ + ^v^     select conversion scheme(s)",
+		" ^ctrl^ + ^t^     toggle subwindow before lines",
+		" ^Y^            send a signal to a window (for commands)",
+		" ^y^            set linewrap",
+		" ^o^            wipe (clear) a window",
+		" ^O^            wipe all windows",
+		" ^T^            truncate a logfile",
+		" ^g^            make screendump",
+		" ^r^            redraw screen",
+		" ^I^            toggle case sensitivity for searches",
+		" ^l^            list keybindings",
+		" ^i^            info",
+		" ^t^            statistics",
+		" ^j^            set window sizes",
+		" ^z^            hide/unhide a window",
+		" ^u^            hide all windows but the one selected",
+		" ^U^            unhide all windows",
+		" ^w^            write a script which starts multitail with the current settings (the files that are monitored, regular expressions, etc.)",
+		" ^n^            clear the buffer of a window",
+		" ^N^            clear all buffers of all windows",
+		" ^m^            set the size of a buffer",
+		" ^k^            enter a (limited) terminal-mode",
+		" ^p^            pause all windows",
+		" ^P^            (un-)pause one window",
 		NULL
 	};
 
 char *help_add_file_or_cmd[] = {
-		"MultiTail lets you display logfiles and the",
-		"output of commands. At this point you can select",
-		"wether you want to add to the new window a file",
-		"or the output of a command.",
+		"MultiTail lets you display logfiles and the output of commands. At this point you can select",
+		"whether you want to add to the new window a file or the output of a command.",
 		" ^f^     selects a file",
 		" ^c^     selects a commands",
 		" ^ctrl+g^     abort",
 		"",
-		"Commands are executed in their own virtual tty to",
-		"force line-buffered output. They are executed by",
-		"starting up */bin/sh -c* with as parameter the",
-		"command you'll enter here.",
+		"Commands are executed in their own virtual tty to force line-buffered output. They are executed by",
+		"starting up */bin/sh -c* with as parameter the command you'll enter here.",
 		NULL
 	};
 
 char *help_list_keybindings[] = {
-		"This screen lists the keybindings you defined in",
-		"the MultiTail configurationfile which is located",
-		"in "CONFIG_FILE". The keybindings only",
-		"work in the main screen.",
-		"In this screen, you can press the followking",
-		"keys:",
+		"This screen lists the keybindings you defined in the MultiTail configurationfile which is located",
+		"in "CONFIG_FILE". The keybindings only work in the main screen.",
+		"In this screen, you can press the followking keys:",
 		" ^UP^    (cursor key UP) scroll up",
 		" ^DOWN^  (cursor key DOWN) scroll down",
 		" ^q^     abort",
@@ -118,75 +91,50 @@ char *help_list_keybindings[] = {
 	};
 
 char *help_enter_filename_to_monitor[] = {
-		"Please enter the filename of the file you wish to",
-		"monitor. If the file is not in the directory you",
-		"started MultiTail from, please enter the complete",
-		"pathname. As with bash, you can press the *TAB*-",
-		"key for filename completion: if more then one file",
-		"exists beginning with what you typed at that",
-		"point, you'll get a list of files that match. With",
-		"the cursor keys and the enter key you can then",
-		"select the filename to use.",
+		"Please enter the filename of the file you wish to monitor. If the file is not in the directory you",
+		"started MultiTail from, please enter the complete pathname. As with bash, you can press the *TAB*-",
+		"key for filename completion: if more then one file exists beginning with what you typed at that",
+		"point, you'll get a list of files that match. With the cursor keys and the enter key you can then select the filename to use.",
 		NULL
 	};
 
 char *help_enter_cmd_to_monitor[] = {
-		"Please enter the command that you want to monitor",
-		"with MultiTail. If the command is not in the",
-		"directory you started MultiTail from, please enter",
-		"the complete pathname. As with bash, you can press",
-		"the *TAB* key for filename completion: if more",
-		"then one file exists beginning with what you typed",
-		"at that point, you'll get a list of files that",
-		"match. With the cursor keys and the enter key you",
-		"can then select the filename to use.",
+		"Please enter the command that you want to monitor with MultiTail. If the command is not in the",
+		"directory you started MultiTail from, please enter the complete pathname. As with bash, you can press",
+		"the *TAB* key for filename completion: if more then one file exists beginning with what you typed",
+		"at that point, you'll get a list of files that match. With the cursor keys and the enter key you can then select the filename to use.",
 		"",
-		"Commands are executed in their own virtual tty to",
-		"force line-buffered output. They are executed by",
-		"starting up */bin/sh -c* with as parameter the",
-		"command you'll enter here.",
+		"Commands are executed in their own virtual tty to force line-buffered output. They are executed by",
+		"starting up */bin/sh -c* with as parameter the command you'll enter here.",
 		NULL
 	};
 
 char *help_add_window_merge_subwin[] = {
-		"At this point there are already one or more",
-		"windows on the screen. You can now indicate if",
-		"you want the new file/command to be *merged* in an",
-		"existing window. Lines from the logfiles/commands",
-		"in a window are then interleaved as they are",
-		"generated",
-		"Enter ^y^ or ^n^ here or ^ctrl+g^ to abort.",
+		"At this point there are already one or more windows on the screen. You can now indicate if",
+		"you want the new file/command to be *merged* in an existing window. Lines from the logfiles/commands",
+		"in a window are then interleaved as they are generated Enter ^y^ or ^n^ here or ^ctrl+g^ to abort.",
 		NULL
 	};
 
 char *help_add_window_select_merge_window[] = {
-		"At this point there are already one or more",
-		"windows on the screen. You can now indicate if",
-		"you want the new file/command to be *merged* in an",
-		"existing window. Lines from the logfiles/commands",
-		"in a window are then interleaved as they are",
-		"generated",
-		"Here, select the window to merge with.",
-		"Press ^ctrl+g^ to abort.",
+		"At this point there are already one or more windows on the screen. You can now indicate if",
+		"you want the new file/command to be *merged* in an existing window. Lines from the logfiles/commands",
+		"in a window are then interleaved as they are generated",
+		"Here, select the window to merge with. Press ^ctrl+g^ to abort.",
 		NULL
 	};
 
 char *help_add_file_follow_filename[] = {
 		"Here you can select wether to follow the filename",
 		"(^y^) or the filedescriptor (^n^). When the file that",
-		"you want to monitor gets, for example, \"rotated\"",
-		"by *logrotate* every night, you want to select to",
-		"follow the filename here. What this means is: if",
-		"the filename gets renamed (or deleted) and a new",
-		"file with the original filename is created, that",
-		"new file will automatically be monitored instead",
-		"of the original file.",
+		"you want to monitor gets, for example, \"rotated\" by *logrotate* every night, you want to select to",
+		"follow the filename here. What this means is: if the filename gets renamed (or deleted) and a new",
+		"file with the original filename is created, that new file will automatically be monitored instead of the original file.",
 		NULL,
 	};
 
 char *help_ask_colors[] = {
-		"Now you can select how MultiTail colors the text",
-		"it displays.",
+		"Now you can select how MultiTail colors the text it displays.",
 		" ^n^     do *not* use any coloring at all",
 		" ^s^     this option expects that you're monitoring",
 		"       a file in the syslog format, e.g: date",
@@ -207,107 +155,72 @@ char *help_ask_colors[] = {
 		"       each field in a line",
 		" ^ctrl+g^     abort",
 		"",
-		"Using colors only works if your terminal supports",
-		"this.",
+		"Using colors only works if your terminal supports this.",
 		NULL,
 	};
 
 char *help_colors_field_nr[] = {
-		"Selecting a field works like the *cut* command:",
-		"you select a delimiter and a field-nummer. The",
-		"delimiter specifies where a field ends and where",
-		"the next field starts. There's one important",
-		"difference between MultiTail and *cut* field-",
-		"delimiters can be more then one character in size.",
+		"Selecting a field works like the *cut* command: you select a delimiter and a field-nummer. The",
+		"delimiter specifies where a field ends and where the next field starts. There's one important",
+		"difference between MultiTail and *cut* field- delimiters can be more then one character in size.",
 		"",
-		"Here, please enter the number of the field which",
-		"you want to use for the color-selection. The first",
-		"field on a line has number 0.",
+		"Here, please enter the number of the field which you want to use for the color-selection. The first field on a line has number 0.",
 		NULL
 	};
 
 char *help_colors_field_delimiter[] = {
-		"Selecting a field works like the *cut* command:",
-		"you select a delimiter and a field-nummer. The",
-		"delimiter specifies where a field ends and where",
-		"the next field starts. There's one important",
-		"difference between MultiTail and *cut* field-",
-		"delimiters can be more then one character in size.",
+		"Selecting a field works like the *cut* command: you select a delimiter and a field-nummer. The",
+		"delimiter specifies where a field ends and where the next field starts. There's one important",
+		"difference between MultiTail and *cut* field- delimiters can be more then one character in size.",
 		"",
-		"Here, please enter the string that delimits each",
-		"field. This delimiter must be at least one",
-		"character in size.",
+		"Here, please enter the string that delimits each field. This delimiter must be at least one character in size.",
 		NULL
 	};
 
 char *help_ask_colors_select_scheme[] = {
-		"Here you can select a predefined color scheme.",
-		"These color schemes are defined in *multitail.conf*",
-		"which can be located in your homedirectory and in",
-		"*/etc*.",
-		"In this configuration file you select using",
-		"regular expressions what color to use for what",
-		"patterns.",
-		"See the example *multitail.conf* which should've",
-		"been included with the MultiTail when you",
-		"installed it.",
-		"Press ^ctrl+g^ to abort.",
+		"Here you can select a predefined color scheme. These color schemes are defined in *multitail.conf*",
+		"which can be located in your homedirectory and in */etc*.",
+		"In this configuration file you select using regular expressions what color to use for what",
+		"patterns. See the example *multitail.conf* which should've",
+		"been included with the MultiTail when you installed it. Press ^ctrl+g^ to abort.",
 		NULL
 	};
 
 char *help_add_window_repeat_interval[] = {
-		"In the case that the external command you're",
-		"monitoring with MultiTail exits, the window gets",
-		"automatically closed. Press enter to indicate that",
-		"that is ok with you. If you want the command to be",
-		"automatically repeated instead, enter here the",
-		"delay before restarting that command. The minimum",
-		"is 0: in that case the program gets repeated",
-		"immediately (that is: when MultiTail notices that",
-		"it died!).",
-		"Press enter on an empty line to abort.",
+		"In the case that the external command you're monitoring with MultiTail exits, the window gets",
+		"automatically closed. Press enter to indicate that that is ok with you. If you want the command to be",
+		"automatically repeated instead, enter here the delay before restarting that command. The minimum",
+		"is 0: in that case the program gets repeated immediately (that is: when MultiTail notices that",
+		"it died!). Press enter on an empty line to abort.",
 		NULL
 	};
 
 char *help_add_file_display_diff[] = {
-		"In some situations (for example: when monitoring",
-		"the output of '*netstat -t tcp*') you may only",
-		"want to see the difference between each run. In",
-		"that case press ^y^ here. To see all output every",
-		"time, press ^n^.",
-		"Press ^ctrl+g^ to abort.",
+		"In some situations (for example: when monitoring the output of '*netstat -t tcp*') you may only",
+		"want to see the difference between each run. In that case press ^y^ here. To see all output every time, press ^n^. Press ^ctrl+g^ to abort.",
 		"",
-		"On the commandline you can select this behaviour",
-		"with the ^-R^ switch.",
+		"On the commandline you can select this behaviour with the ^-R^ switch.",
 		NULL
 	};
 
 #define help_merge_another_window help_add_window_select_merge_window
 
 char *help_enter_regexp_select_window[] = {
-		"In this menu one can enter/edit/delete regular",
-		"expressions which are used to filter what is",
+		"In this menu one can enter/edit/delete regular expressions which are used to filter what is",
 		"displayed in a window."
-		"First you need to select the main-window. If more",
-		"then one file/command is displayed in a window,",
-		"you'll get another selection box after this one",
-		"where you can select a \"sub-window\".",
-		"Press ^ctrl+g^ to abort.",
+		"First you need to select the main-window. If more then one file/command is displayed in a window,",
+		"you'll get another selection box after this one where you can select a \"sub-window\". Press ^ctrl+g^ to abort.",
 		NULL
 	};
 
 char *help_enter_regexp_select_subwindow[] = {
-		"The window you selected contains the output of",
-		"more then one file/command. You now have to",
-		"select the \"sub-window\" to edit the regular",
-		"expressions for.",
-		"Press ^ctrl+g^ to abort.",
+		"The window you selected contains the output of more then one file/command. You now have to",
+		"select the \"sub-window\" to edit the regular expressions for. Press ^ctrl+g^ to abort.",
 		NULL
 	};
 
 char *help_regexp_menu[] = {
-		"This menu has a couple of options for editing",
-		"regexps ('regular expressions'):",
+		"This menu has a couple of options for editing regexps ('regular expressions'):",
 		" ^a^     add a new regexp (one can have a maximum",
 		"       of 10 per file/command)",
 		" ^e^     edit an existing regexp",
@@ -321,23 +234,16 @@ char *help_regexp_menu[] = {
 	};
 
 char *help_enter_regexp[] = {
-		"Enter a regular expression. This expression will",
-		"be used for filtering.",
-		"A regular expression is a method for defining",
-		"text-patterns. See wikipedia for more info:",
-		"_http://en.wikipedia.org/wiki/Regular__expression_",
-		"or read my (Dutch!) article:",
-		"_http://www.vanheusden.com/misc/regexp.html_",
-		"Press enter on an empty line to abort.",
+		"Enter a regular expression. This expression will be used for filtering.",
+		"A regular expression is a method for defining text-patterns. See wikipedia for more info:",
+		"_http://en.wikipedia.org/wiki/Regular__expression_ or read my (Dutch!) article:",
+		"_http://www.vanheusden.com/misc/regexp.html_ Press enter on an empty line to abort.",
 		NULL
 	};
 
 char *help_negate_regexp[] = {
-		"Here you select how to handle the outcome of the",
-		"regular expression processing: should it match",
-		"when the regexp matches, or should it match when",
-		"the regexp does *not* match?",
-		"Press ^ctrl+g^ to abort.",
+		"Here you select how to handle the outcome of the regular expression processing: should it match",
+		"when the regexp matches, or should it match when the regexp does *not* match? Press ^ctrl+g^ to abort.",
 		NULL
 	};
 
@@ -361,133 +267,93 @@ char *help_regexp_usage[] = {
 	};
 
 char *help_enter_cmd[] = {
-		"Enter the command which should be executed when a",
-		"line matches a regular expression.",
-		"The command is executed in the background and its",
-		"output is redirected to */dev/null*.",
-		"The command is started as a parameter of */bin/sh -c*",
-		"Press enter on an empty line to abort.",
+		"Enter the command which should be executed when a line matches a regular expression.",
+		"The command is executed in the background and its output is redirected to */dev/null*.",
+		"The command is started as a parameter of */bin/sh -c* Press enter on an empty line to abort.",
 		NULL
 	};
 
 char *help_compile_regexp_failed[] = {
-		"Compilation (\"pre-processing\") of the regular",
-		"expression failed.",
-		"Please check the wikipedia page for the correct",
-		"syntax:",
-		"_http://en.wikipedia.org/wiki/Regular__expression_",
-		"or read my (Dutch!) article:",
-		"_http://www.vanheusden.com/misc/regexp.html_",
+		"Compilation (\"pre-processing\") of the regular expression failed.",
+		"Please check the wikipedia page for the correct syntax:",
+		"_http://en.wikipedia.org/wiki/Regular__expression_ or read my (Dutch!) article: _http://www.vanheusden.com/misc/regexp.html_",
 		NULL
 	};
 
 char *help_delete_select_window[] = {
-		"You've indicated that you want to delete a window.",
-		"Select the window that you want to remove.",
-		"If a window consists of more then one logfile or",
-		"command, you'll be asked next if you want to",
-		"remove the complete window including all",
-		"\"subwindows\" or just the first one (the first",
-		"file/command).",
-		"Press ^ctrl+g^ to abort.",
+		"You've indicated that you want to delete a window. Select the window that you want to remove.",
+		"If a window consists of more then one logfile or command, you'll be asked next if you want to",
+		"remove the complete window including all \"subwindows\" or just the first one (the first file/command). Press ^ctrl+g^ to abort.",
 		NULL
 	};
 
 char *help_delete_window_delete_all_subwin[] = {
-		"This window contains more then one logfile /",
-		"command. Here you select if you want to remove all",
-		"\"subwindows\" or just the first file/command.",
-		"Press ^ctrl+g^ to abort.",
+		"This window contains more then one logfile / command. Here you select if you want to remove all",
+		"\"subwindows\" or just the first file/command. Press ^ctrl+g^ to abort.",
 		NULL
 	};
 
 char *help_delete_select_subwindow[] = {
-		"This window contains more then one logfile /",
-		"command. Select the file / command you wish to",
-		"remove from this window.",
-		"Press ^ctrl+g^ to abort.",
+		"This window contains more then one logfile / command. Select the file / command you wish to remove from this window. Press ^ctrl+g^ to abort.",
 		NULL
 	};
 
 char *help_swap_win1[] = {
-		"You have indicated that you want to swap the",
-		"location (on the screen) of 2 windows.",
-		"Please select the first window.",
-		"Press ^ctrl+g^ to abort.",
+		"You have indicated that you want to swap the location (on the screen) of 2 windows.",
+		"Please select the first window. Press ^ctrl+g^ to abort.",
 		NULL
 	};
 
 char *help_swap_win2[] = {
-		"You have indicated that you want to swap the",
-		"location (on the screen) of 2 windows.",
-		"Please select the second window.",
-		"Press ^ctrl+g^ to abort.",
+		"You have indicated that you want to swap the location (on the screen) of 2 windows.",
+		"Please select the second window. Press ^ctrl+g^ to abort.",
 		NULL
 	};
 
 char *help_toggle_colors_select_window[] = {
-		"You've indicated that you want to change the",
-		"colors of a window. Please select that window.",
-		"If a window consists of more then one logfile or",
-		"command, you'll be asked to select the file or",
-		"command in that window to change the colors for.",
-		"Press ^ctrl+g^ to abort.",
+		"You've indicated that you want to change the colors of a window. Please select that window.",
+		"If a window consists of more then one logfile or command, you'll be asked to select the file or",
+		"command in that window to change the colors for. Press ^ctrl+g^ to abort.",
 		NULL
 	};
 
 char *help_toggle_colors_select_subwindow[] = {
-		"This window contains more then one logfile /",
-		"command. Select the file / command you wish to",
-		"change the colors for.",
-		"Press ^ctrl+g^ to abort.",
+		"This window contains more then one logfile / command. Select the file / command you wish to change the colors for. Press ^ctrl+g^ to abort.",
 		NULL
 	};
 
 char *help_failed_to_start_tail[] = {
-		"There was a problem starting the '*tail*'-process",
-		"(in case you wanted to monitor a logfile) or",
-		"there was a problem starting the command you",
-		"wanted to monitor.",
+		"There was a problem starting the '*tail*'-process (in case you wanted to monitor a logfile) or",
+		"there was a problem starting the command you wanted to monitor.",
 		NULL
 	};
 
 char *help_window_closed[] = {
-		"A window has closed. This happens when you're",
-		"monitoring the output of an external program. That",
-		"program has died and when that happens the",
-		"window is automatically closed.",
-		"On the commandline you can set with the ^-r^ or",
-		"the ^-R^ that a command should be repeated when it",
-		"exits. This behaviour can also be set when you add",
-		"a window by pressing the ^a^-key in the main menu.",
+		"A window has closed. This happens when you're monitoring the output of an external program. That",
+		"program has died and when that happens the window is automatically closed.",
+		"On the commandline you can set with the ^-r^ or the ^-R^ that a command should be repeated when it",
+		"exits. This behaviour can also be set when you add a window by pressing the ^a^-key in the main menu.",
 		NULL
 	};
 
 char *help_write_script[] = {
-		"This function writes a script to disk which will",
-		"start MultiTail in the same state it now is. This",
-		"is usefull in case you did a lot of configuring",
-		"with the menu-interface, you then don't have to",
-		"find out what commandline switches to set.",
-		"Here you have to enter the filename for the script",
-		"to generate.",
-		"Press enter on an empty line to abort.",
+		"This function writes a script to disk which will start MultiTail in the same state it now is. This",
+		"is usefull in case you did a lot of configuring with the menu-interface, you then don't have to",
+		"find out what commandline switches to set. Here you have to enter the filename for the script",
+		"to generate. Press enter on an empty line to abort.",
 		NULL
 	};
 
 char *help_statistics[] = {
-		"In this menu one can select the window or sub-",
-		"window to display the statistics off.",
+		"In this menu one can select the window or sub- window to display the statistics off.",
 		" ^r^     reset ALL counters for ALL windows",
 		" ^ctrl+g^     exit window",
 		NULL,
 	};
 
 char *help_statistics_popup[] = {
-		"Apart from how long MultiTail has been running, it",
-		"also shows a couple of statistics for each window.",
-		"It also shows some statistics on the interval",
-		"between each show line in each window.",
+		"Apart from how long MultiTail has been running, it also shows a couple of statistics for each window.",
+		"It also shows some statistics on the interval between each show line in each window.",
 		" *average*             average interval",
 		" *standard deviation*  speaks for itself",
 		"",
@@ -497,9 +363,7 @@ char *help_statistics_popup[] = {
 	};
 
 char *help_set_buffering[] = {
-		"In this window you can control the buffering for",
-		"each window. The first question lets you select",
-		"on what window you want to set the buffering",
+		"In this window you can control the buffering for each window. The first question lets you select on what window you want to set the buffering",
 		"parameters:"
 		" ^a^     set on all windows",
 		" ^o^     set on one window",
@@ -518,31 +382,23 @@ char *help_set_buffering_store_what[] = {
 	};
 
 char *help_enter_number_of_lines_to_store[] = {
-		"Set the size of the buffer. The default size is",
-		"100 lines per window.",
-		"Press enter on an empty line to abort.",
+		"Set the size of the buffer. The default size is 100 lines per window. Press enter on an empty line to abort.",
 		NULL
 	};
 
 char *help_set_buffering_select_window[] = {
-		"Here you select the window on which you want to",
-		"set the buffer limits.",
-		"Press ^ctrl+g^ to abort.",
+		"Here you select the window on which you want to set the buffer limits. Press ^ctrl+g^ to abort.",
 		NULL
 	};
 
 char *help_hide_window[] = {
-		"Select the window that you want to (un-)hide. When",
-		"a window is hidden, it is not displayed: logging",
-		"and filtering continues as usual.",
-		"Press ^ctrl+g^ to abort.",
+		"Select the window that you want to (un-)hide. When a window is hidden, it is not displayed: logging",
+		"and filtering continues as usual. Press ^ctrl+g^ to abort.",
 		NULL
 	};
 
 char *help_set_windowsizes[] = {
-		"Here you can set the sizes of windows. The width",
-		"can only set for *all* windows, the height can be",
-		"set for each individual window.",
+		"Here you can set the sizes of windows. The width can only set for *all* windows, the height can be set for each individual window.",
 		" ^m^     manage columns: add a column, set width",
 		" ^h^     set the height for a window",
 		"Press ^ctrl+g^ to abort.",
@@ -550,56 +406,37 @@ char *help_set_windowsizes[] = {
 	};
 
 char *help_set_window_width[] = {
-		"When setting the window width, you actually set",
-		"the width of the windows on the left. So if you",
-		"set it to 20, the windows on the left are 20",
-		"characters in width. The windows on the right are",
-		"then what is left in width. Beware: one column is",
-		"used for the dividing line.",
-		"This option can only be used when you've switched",
-		"on \"vertical split\" in the main menu (^v^).",
-		"Press enter on an empty line to abort.",
+		"When setting the window width, you actually set the width of the windows on the left. So if you",
+		"set it to 20, the windows on the left are 20 characters in width. The windows on the right are",
+		"then what is left in width. Beware: one column is used for the dividing line.",
+		"This option can only be used when you've switched on \"vertical split\" in the main menu (^v^). Press enter on an empty line to abort.",
 		NULL
 	};
 
 char *help_set_window_height[] = {
-		"The height of a window must be at least 2 lines.",
-		"That is excluding the statusline. The statusline",
-		"can be switched off using the '^-D^' commandline",
-		"switch.",
-		"One can only set the window height if there are at",
-		"least 2 windows on the screen.",
-		"When you enter '0' MultiTail will automatically",
-		"set the height. The height must be either 0 or",
-		"more then one.",
-		"Press enter on an empty line to abort.",
+		"The height of a window must be at least 2 lines. That is excluding the statusline. The statusline",
+		"can be switched off using the '^-D^' commandline switch.",
+		"One can only set the window height if there are at least 2 windows on the screen.",
+		"When you enter '0' MultiTail will automatically set the height. The height must be either 0 or",
+		"more then one. Press enter on an empty line to abort.",
 		NULL
 	};
 
 char *help_set_window_height_select_window[] = {
-		"You're about to set the height of a window. The",
-		"first step is to select the window which you want",
-		"to resize.",
-		"Press ^ctrl+g^ to abort.",
+		"You're about to set the height of a window. The first step is to select the window which you want to resize. Press ^ctrl+g^ to abort.",
 		NULL
 	};
 
 char *help_terminal_mode_select_window[] = {
-		"MultiTail features a small terminal. With this",
-		"terminal you can send commando's to a program you",
-		"are monitoring. That way, one can put a telnet-",
-		"session in a window, login and start a tail-",
-		"process on the remote host.",
-		"Warning: this doesn't work for ssh as ssh accesses",
-		"the tty you've been logged on directly.",
+		"MultiTail features a small terminal. With this terminal you can send commando's to a program you",
+		"are monitoring. That way, one can put a telnet- session in a window, login and start a tail-",
+		"process on the remote host. Warning: this doesn't work for ssh as ssh accesses the tty you've been logged on directly.",
 		NULL
 	};
 
 char *help_scrollback_help[] = {
-		"The scrollback menu lets you scrollback in the",
-		"buffer. The default size of the buffer is 100",
-		"lines. This size can be set with the ^-m^ command-",
-		"line parameter or the ^m^-key in the main menu.",
+		"The scrollback menu lets you scrollback in the buffer. The default size of the buffer is 100",
+		"lines. This size can be set with the ^-m^ command- line parameter or the ^m^-key in the main menu.",
 		" ^c^     set colors",
 #ifdef __APPLE__
 		" ^x^     copy contents to clipboard (pbcopy)",
@@ -630,37 +467,28 @@ char *help_scrollback_savefile[] = {
 };
 
 char *help_scrollback_savefile_enter_filename[] = {
-		"Save a buffer to a file. Enter the name of the",
-		"file to write to.",
-		"Press enter on an empty line to abort.",
+		"Save a buffer to a file. Enter the name of the file to write to. Press enter on an empty line to abort.",
 		NULL
 	};
 
 char *help_scrollback_no_mark[] = {
-		"You cannot scrollback in this window as it has no",
-		"buffer. Press ^m^ in the main-menu to set the size",
-		"of the buffer or use the ^-m^ commandline switch.",
+		"You cannot scrollback in this window as it has no buffer. Press ^m^ in the main-menu to set the size of the buffer or use the ^-m^ commandline switch.",
 		NULL
 	};
 
 char *help_scrollback_select_window[] = {
-		"Select the window in which you want to scrollback.",
-		"Press ^ctrl+g^ to abort.",
+		"Select the window in which you want to scrollback. Press ^ctrl+g^ to abort.",
 		NULL
 	};
 
 char *help_scrollback_edit_search_string[] = {
-		"Enter the string to search for in the scrollback-",
-		"buffer. The search-string can be a regular",
-		"expression.",
-		"Press enter on an empty line to abort.",
+		"Enter the string to search for in the scrollback- buffer. The search-string can be a regular",
+		"expression. Press enter on an empty line to abort.",
 		NULL
 	};
 
 char *help_pause_a_window[] = {
-		"Select the window to (un-)pause. When a window is",
-		"paused, it won't be updated until the window is",
-		"un-paused. NOTHING will be discarded.",
+		"Select the window to (un-)pause. When a window is paused, it won't be updated until the window is un-paused. NOTHING will be discarded.",
 		NULL
 	};
 
@@ -670,36 +498,29 @@ char *help_ask_colors_select_color[] = {
 	};
 
 char *help_set_vertical_split_n_win[] = {
-		"Enter the number of columns to split the terminal",
-		"in. If you press 'j' in the menu, you can also",
-		"select the number of windows per column.",
+		"Enter the number of columns to split the terminal in. If you press 'j' in the menu, you can also select the number of windows per column.",
 		NULL
 	};
 
 char *help_wipe_window[] = {
-		"Press the number of the window to wipe. The number",
-		"can be found in the status-line of the windows.",
-		"Press 'r' to redraw the windows so that you can",
-		"see their contents again.",
+		"Press the number of the window to wipe. The number can be found in the status-line of the windows.",
+		"Press 'r' to redraw the windows so that you can see their contents again.",
 		NULL
 	};
 
 char *help_select_colorschemes[] = {
-		"Move the cursor with the cursor keys to the a",
-		"color scheme. Then press space to select and again",
+		"Move the cursor with the cursor keys to the a color scheme. Then press space to select and again",
 		"to unselect. Press enter to submit or ^g to abort.",
 		NULL
 	};
 
 char *help_manage_cols[] = {
-		"Press ^a^ to add a column, ^d^ to delete one and press",
-		"^e^ to set the number of windows in a column.",
+		"Press ^a^ to add a column, ^d^ to delete one and press ^e^ to set the number of windows in a column.",
 		NULL
 	};
 
 char *help_set_linewrap[] = {
-		"In this menu one can set how the wrap the text in",
-		"windows.",
+		"In this menu one can set how the wrap the text in windows.",
 		" ^l^  start at the left and cut of at the right",
 		" ^a^  try to display everything",
 		" ^r^  cut off at the left",
@@ -721,9 +542,7 @@ char *help_enter_stripper_select_subwindow[] = {
 	};
 
 char *help_redirect_failed[] = {
-		"Sending the data which was retrieved from a tail-",
-		"process to some other process or file failed.",
-		"Maybe the disk is full or the process died?",
+		"Sending the data which was retrieved from a tail- process to some other process or file failed. Maybe the disk is full or the process died?",
 		NULL
 	};
 
@@ -736,59 +555,48 @@ char *help_stripper_type[] = {
 	};
 
 char *help_stripper_start_offset[] = {
-		"Please enter the offset from where to strip the",
-		"string. The offset starts at 0.",
+		"Please enter the offset from where to strip the string. The offset starts at 0.",
 		NULL
 	};
 
 char *help_stripper_end_offset[] = {
-		"Please enter the offset upto where the string will",
-		"be filtered. Upto, not including!",
+		"Please enter the offset upto where the string will be filtered. Upto, not including!",
 		NULL
 	};
 
 char *help_stripper_delimiter[] = {
-		"When selecting stripping by column-number you need",
-		"to enter the delimiter for each column. Usually",
-		"you would enter a space here.",
+		"When selecting stripping by column-number you need to enter the delimiter for each column. Usually you would enter a space here.",
 		NULL
 	};
 
 char *help_stripper_col_nr[] = {
-		"Enter the number of the column here. The first one",
-		"is at offset 0.",
+		"Enter the number of the column here. The first one is at offset 0.",
 		NULL
 	};
 
 char *help_error_write_script_create_file[] = {
-		"There was an error writing the scriptfile. Maybe",
-		"the filesystem is full or the media is damaged?",
+		"There was an error writing the scriptfile. Maybe the filesystem is full or the media is damaged?",
 		NULL
 	};
 
 char *help_column_width[] = {
-		"Enter the number of characters that will fit in a",
-		"line for this column.",
+		"Enter the number of characters that will fit in a line for this column.",
 		NULL
 	};
 
 char *help_n_win_per_col[] = {
-		"Enter the number of windows that will fit in this",
-		"column (vertically).",
+		"Enter the number of windows that will fit in this column (vertically).",
 		NULL
 	};
 
 char *help_send_signal_select_window[] = {
-		"Select the window to send the signal to. Please",
-		"note that sending a signal may cause the process",
-		"(for example the tail-process when monitoring a",
-		"logfile) to exit and thereby closing the window.",
+		"Select the window to send the signal to. Please note that sending a signal may cause the process",
+		"(for example the tail-process when monitoring a logfile) to exit and thereby closing the window.",
 		NULL
 	};
 
 char *help_send_signal_window_send_to_all_subwin[] = {
-		"Would you like to send the signal to all sub-",
-		"windows?",
+		"Would you like to send the signal to all sub- windows?",
 		NULL
 	};
 
@@ -798,52 +606,42 @@ char *help_send_signal_select_subwindow[] = {
 	};
 
 char *help_send_signal_failed[] = {
-		"Sending the signal to the process failed. This",
-		"should not happen.",
+		"Sending the signal to the process failed. This should not happen.",
 		NULL
 	};
 
 char *help_select_signal[] = {
-		"Select the signal to send. Please note that some",
-		"signals may cause the process to exit and closing",
-		"the window",
+		"Select the signal to send. Please note that some signals may cause the process to exit and closing the window",
 		NULL
 	};
 
 char *help_screendump_select_file[] = {
-		"Select the file to write the screendump to.",
-		"Existing files will be overwritten.",
+		"Select the file to write the screendump to. Existing files will be overwritten.",
 		NULL
 	};
 
 char *help_screendump_select_win[] = {
-		"Select the window to dump to a screendump-file.",
-		"The output file will be plain ascii.",
+		"Select the window to dump to a screendump-file. The output file will be plain ascii.",
 		NULL
 	};
 
 char *help_truncate_file_select_window[] = {
-		"Select window. By selecting a window you select",
-		"the file to truncate.",
+		"Select window. By selecting a window you select the file to truncate.",
 		NULL
 	};
 
 char *help_truncate_file_select_subwindow[] = {
-		"As the window you selected contains several sub-",
-		"windows, you need to select now the subwindow to",
-		"truncate.",
+		"As the window you selected contains several sub- windows, you need to select now the subwindow to truncate.",
 		NULL
 	};
 
 char *help_truncate_areyousure[] = {
-		"Are you really sure you want to truncate this",
-		"file? This cannot be undone!",
+		"Are you really sure you want to truncate this file? This cannot be undone!",
 		NULL
 	};
 
 char *help_truncate_failed[] = {
-		"There was an error truncating the file. Please",
-		"check the permissions on the file.",
+		"There was an error truncating the file. Please check the permissions on the file.",
 		NULL
 	};
 
@@ -853,35 +651,26 @@ char *help_truncate_only_logfiles[] = {
 	};
 
 char *help_select_color_and_attributes[] = {
-		"Select the foreground and background color to use.",
-		"You can select one foreground and one background-",
-		"color but you can select multiple attributes.",
-		"Press the space-bar to select or un-select.",
+		"Select the foreground and background color to use. You can select one foreground and one background-",
+		"color but you can select multiple attributes. Press the space-bar to select or un-select.",
 		NULL
 	};
 
 char *help_cannot_change_color[] = {
-		"Your terminal doesn't support chaning the red,",
-		"green and blue values of a color.",
+		"Your terminal doesn't support chaning the red, green and blue values of a color.",
 		NULL
 	};
 
 char *help_edit_color_edit[] = {
-		"Depending on the range you selected (by pressing",
-		"the cursor up and down key), you can enter a value",
-		"for either red, green or blue in the range of",
-		"0-1000, 0-255 or 00-ff (hex value).",
+		"Depending on the range you selected (by pressing the cursor up and down key), you can enter a value",
+		"for either red, green or blue in the range of 0-1000, 0-255 or 00-ff (hex value).",
 		NULL
 	};
 
 char *help_edit_color[] = {
-		"In this menu one can edit the values for the red,",
-		"the green and the blue component of a color.",
-		"Move the '>' with the up and down cursorkeys in",
-		"front of the range in which you want to enter the",
-		"value. The uppermost range being 0 upto 1000, the",
-		"middle 0-255 and the lowest also 0-255 but entered",
-		"in hexadecimal values.",
+		"In this menu one can edit the values for the red, the green and the blue component of a color.",
+		"Move the '>' with the up and down cursorkeys in front of the range in which you want to enter the",
+		"value. The uppermost range being 0 upto 1000, the middle 0-255 and the lowest also 0-255 but entered in hexadecimal values.",
 		" ^r^   edit the red component",
 		" ^g^   edit the green component",
 		" ^b^   edit the blue component",
@@ -890,71 +679,55 @@ char *help_edit_color[] = {
 	};
 
 char *help_edit_color_change_name[] = {
-		"One can give this specific red, green and blue",
-		"values a name. Like roses-red or so. This name can",
-		"then be used in a color scheme.",
+		"One can give this specific red, green and blue values a name. Like roses-red or so. This name can then be used in a color scheme.",
 		NULL
 	};
 
 char *help_hide_but_window[] = {
-		"Select which window to keep open. All other",
-		"windows will be closed.",
+		"Select which window to keep open. All other windows will be closed.",
 		NULL
 	};
 
 char *help_search_in_all_windows[] = {
-		"This functionality lets you search in all windows.",
-		"The result will be merged into one new window.",
+		"This functionality lets you search in all windows. The result will be merged into one new window.",
 		NULL
 	};
 
 char *help_highlight_in_all_windows[] = {
-		"This functionality lets you search in all windows.",
-		"All lines with the search-string will be",
-		"highlighted (displayed in reverse).",
+		"This functionality lets you search in all windows. All lines with the search-string will be highlighted (displayed in reverse).",
 		NULL
 	};
 
 char *help_select_conversionschemes[] = {
-		"With a conversionscheme one can let MultiTail",
-		"automatically convert e.g. ip-addresses, time-",
-		"stamps, etc. to something more readable. In this",
-		"menu you can select what conversionscheme(s) to",
-		"apply to a (sub-)window.",
+		"With a conversionscheme one can let MultiTail automatically convert e.g. ip-addresses, time-",
+		"stamps, etc. to something more readable. In this menu you can select what conversionscheme(s) to apply to a (sub-)window.",
 		NULL
 	};
 
 char *help_select_restart_window[] = {
-		"Restarting a window stops- and restarts the tail-",
-		"or command running underneath a (sub-)window.",
+		"Restarting a window stops- and restarts the tail- or command running underneath a (sub-)window.",
 		NULL
 	};
 
 char *help_select_restart_window_all[] = {
-		"This chooses wether to select all sub-windows or",
-		"just one specific.",
+		"This chooses wether to select all sub-windows or just one specific.",
 		NULL
 	};
 
 char *help_select_terminal_emulation[] = {
-		"MultiTail can emulate a terminal. That way it can",
-		"display color (escape-)codes that sometimes are",
-		"in (log-)files.",
+		"MultiTail can emulate a terminal. That way it can display color (escape-)codes that sometimes are in (log-)files.",
 		NULL
 	};
 
 char *help_clear_buffer[] = {
-		"Select window for which to clear the scrollback",
-		"buffer.",
+		"Select window for which to clear the scrollback buffer.",
 		NULL
 	};
 
 char *help_history[] = {
 		/*2345678901234567890123456789012345678901234567890 */
-		"Select a string from this list. These strings have",
-		"been used in the past in MultiTail. They are",
-		"stored in a file. Check the 'history_file' entry",
-		"in the configuration-file to see in what file.",
+		"Select a string from this list. These strings have been used in the past in MultiTail. They are",
+		"stored in a file. Check the 'history_file' entry in the configuration-file to see in what file.",
 		NULL
 	};
 
@@ -1085,13 +858,15 @@ void show_help(int what_help)
 
 	if (php)
 	{
-		NEWWIN *winb = create_popup(15 + 2, 50 + 4);
-		NEWWIN *win  = create_popup(15    , 50    );
+		int win_lines = min(lines_big, max_y - 10);
+		int win_colls = min(colls_big, max_x - 10);
+		NEWWIN *winb = create_popup(win_lines + 2, win_colls + 4);
+		NEWWIN *win  = create_popup(win_lines    , win_colls    );
 
 		while(php -> text[line_cnt]) line_cnt++;
 
 		wattron(winb -> win, A_STANDOUT);
-		if (line_cnt > 15)
+		if (line_cnt > win_lines)
 			mvwprintw(winb -> win, 0, 2, "Use cursor UP/DOWN to scroll, ctrl+g to exit");
 		else
 			mvwprintw(winb -> win, 0, 2, "Press ctrl+g to exit");
@@ -1107,7 +882,7 @@ void show_help(int what_help)
 				int loop;
 
 				werase(win -> win);
-				for(loop=pos; loop<min(pos + 15, line_cnt); loop++)
+				for(loop=pos; loop<min(pos + win_lines, line_cnt); loop++)
 				{
 					escape_print(win, loop - pos, 0, help[index].text[loop]);
 				}
@@ -1127,13 +902,13 @@ void show_help(int what_help)
 			{
 				pos++;
 			}
-			else if (c == KEY_PPAGE && pos >= 15)
+			else if (c == KEY_PPAGE && pos >= win_lines)
 			{
-				pos -= 15;
+				pos -= win_lines;
 			}
-			else if ((c == KEY_NPAGE || c == ' ') && (pos + 15) < (line_cnt - 1))
+			else if ((c == KEY_NPAGE || c == ' ') && (pos + win_lines) < (line_cnt - 1))
 			{
-				pos += 15;
+				pos += win_lines;
 			}
 			else if (c == KEY_HOME && pos > 0)
 			{

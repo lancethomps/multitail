@@ -340,7 +340,7 @@ void do_exit(void)
 	if (set_title)
 		gui_window_header("");
 
-#ifdef _DEBUG
+#if defined(_DEBUG) && !defined(__APPLE__)
 	/* free up as much as possible */
 	clean_memory();
 
@@ -579,14 +579,14 @@ void gen_wordwrap_offsets(char *string, int start_offset, int end_offset, int wi
 
 int count_utf_bytes(int c)
 {
-        if ((c & 0xe0) == 0xc0)
-                return 2;
-        else if ((c & 0xf0) == 0xe0)
-                return 3;
-        else if ((c & 0xf8) == 0xf0)
-                return 4;
+	if ((c & 0xe0) == 0xc0)
+		return 2;
+	else if ((c & 0xf0) == 0xe0)
+		return 3;
+	else if ((c & 0xf8) == 0xf0)
+		return 4;
 
-        return 1;
+	return 1;
 }
 
 void do_color_print(proginfo *cur, char *use_string, int prt_start, int prt_end, int disp_end, color_offset_in_line *cmatches, int n_cmatches, mybool_t has_merge_colors, char start_reverse, regmatch_t *matches, int matching_regex, char use_regex, NEWWIN *win)
@@ -2800,13 +2800,7 @@ int main(int argc, char *argv[])
 	init_history(&search_h);
 	init_history(&cmdfile_h);
 
-	if (defaultcscheme)
-	{
-		default_color_scheme = find_colorscheme(defaultcscheme);
-
-		if (default_color_scheme == -1)
-			error_exit(FALSE, FALSE, "Default color scheme '%s' is not defined. Please check the MultiTail configuration file %s.\n", defaultcscheme, config_file);
-	}
+	do_default_color_scheme();
 
 	if (markerline_attrs.colorpair_index == -1 && markerline_attrs.attrs == -1)
 		markerline_attrs = find_attr(COLOR_RED, COLOR_BLACK, A_REVERSE);

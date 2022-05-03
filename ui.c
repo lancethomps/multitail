@@ -62,7 +62,7 @@ void error_popup(char *title, int help, char *message, ...)
 void edit_color(int index)
 {
 	int example_color = COLOR_RED;
-	NEWWIN *mywin = create_popup(15, 40);
+	NEWWIN *mywin = create_popup(lines_big, colls_big);
 	int colorbar = find_or_init_colorpair(example_color, example_color, 1);
 	short old_r, old_g, old_b;
 	double scale = 255.0 / 1000.0;
@@ -573,6 +573,9 @@ int select_schemes(void *schemes_in, int n_schemes_in, scheme_t tscheme, int_arr
 	int loop, cur_offset = 0, cur_line = 0;
 	char *selected_schemes = NULL;
 	int c = 0;
+	int win_lines = lines_big;
+	int win_colls = colls_big;
+	int n_display = win_lines - 4;
 
 	if (n_schemes_in == 0)
 	{
@@ -587,7 +590,7 @@ int select_schemes(void *schemes_in, int n_schemes_in, scheme_t tscheme, int_arr
 		selected_schemes[get_iat_element(schemes_out, loop)] = 1;
 
 	/* draw gui */
-	win = create_popup(20, 75);
+	win = create_popup(win_lines, win_colls);
 
 	for(;;)
 	{
@@ -595,7 +598,7 @@ int select_schemes(void *schemes_in, int n_schemes_in, scheme_t tscheme, int_arr
 
 		win_header(win, "Select scheme(s)");
 		mvwprintw(win -> win, 2, 2, "Space to toggle, enter to proceed, ^g to abort");
-		for(loop=0; loop<16; loop++)
+		for(loop=0; loop<n_display; loop++)
 		{
 			char *descr = "", *name;
 
@@ -611,7 +614,7 @@ int select_schemes(void *schemes_in, int n_schemes_in, scheme_t tscheme, int_arr
 				name  = ((conversion *)schemes_in)[cur_offset + loop].name;
 			}
 
-			mvwprintw(win -> win, 3 + loop, 26, "%s", descr);
+			mvwprintw(win -> win, 3 + loop, win_lines + 6, "%s", descr);
 			if (loop == cur_line) ui_inverse_on(win);
 			mvwprintw(win -> win, 3 + loop, 2, "[%c] %s", selected_schemes[cur_offset + loop]?'X':' ', name);
 			if (loop == cur_line) ui_inverse_off(win);
@@ -636,7 +639,7 @@ int select_schemes(void *schemes_in, int n_schemes_in, scheme_t tscheme, int_arr
 		}
 		else if (c == KEY_PPAGE)
 		{
-		 	int todo = 16 - cur_line;
+		 	int todo = n_display - cur_line;
 
 			cur_line = 0;
 
@@ -649,7 +652,7 @@ int select_schemes(void *schemes_in, int n_schemes_in, scheme_t tscheme, int_arr
 		{
 			int todo = cur_line;
 
-			cur_line = 15;
+			cur_line = n_display - 1;
 
 			if ((cur_offset + todo) < (n_schemes_in - 1))
 				cur_offset += todo;
@@ -669,7 +672,7 @@ int select_schemes(void *schemes_in, int n_schemes_in, scheme_t tscheme, int_arr
 		{
 			if ((cur_line + cur_offset) < (n_schemes_in - 1))
 			{
-				if (cur_line < (16 - 1))
+				if (cur_line < (n_display - 1))
 					cur_line++;
 				else
 					cur_offset++;

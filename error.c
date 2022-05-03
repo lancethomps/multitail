@@ -25,9 +25,9 @@ void error_exit_(BOOL show_errno, BOOL show_st, char *file, const char *function
 	va_list ap;
 #if defined(__GLIBC__)
 	int index;
-        void *trace[128];
-        int trace_size = backtrace(trace, 128);
-        char **messages = backtrace_symbols(trace, trace_size);
+	void *trace[128];
+	int trace_size = backtrace(trace, 128);
+	char **messages = backtrace_symbols(trace, trace_size);
 #endif
 
 	(void)endwin();

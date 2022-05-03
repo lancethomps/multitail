@@ -73,11 +73,11 @@ int find_string(buffer *pbuf, char *find, int offset, char direction, mybool_t c
 void scrollback_find_popup(char **find_str, mybool_t *pcase_insensitive)
 {
 	char *dummy;
-	NEWWIN *mywin = create_popup(5, 40);
+	NEWWIN *mywin = create_popup(lines_med, colls_med);
 
 	win_header(mywin, "Find");
 
-	dummy = edit_string(mywin, 3, 2, 40, 80, 0, reuse_searchstring?*find_str:NULL, HELP_SCROLLBACK_EDIT_SEARCH_STRING, -1, &search_h, pcase_insensitive);
+	dummy = edit_string(mywin, 3, 2, colls_med, 80, 0, reuse_searchstring?*find_str:NULL, HELP_SCROLLBACK_EDIT_SEARCH_STRING, -1, &search_h, pcase_insensitive);
 	myfree(*find_str);
 	*find_str = dummy;
 
@@ -87,12 +87,12 @@ void scrollback_find_popup(char **find_str, mybool_t *pcase_insensitive)
 void scrollback_savefile(buffer *pbuf)
 {
 	char *file = NULL;
-	NEWWIN *mywin = create_popup(8, 40);
+	NEWWIN *mywin = create_popup(8, colls_med);
 
 	win_header(mywin, "Save buffer to file");
 
 	mvwprintw(mywin -> win, 4, 2, "Select file");
-	file = edit_string(mywin, 5, 2, 40, find_path_max(), 0, NULL, HELP_SCROLLBACK_SAVEFILE_ENTER_FILENAME, -1, &cmdfile_h, NULL);
+	file = edit_string(mywin, 5, 2, colls_med, find_path_max(), 0, NULL, HELP_SCROLLBACK_SAVEFILE_ENTER_FILENAME, -1, &cmdfile_h, NULL);
 	if (file)
 	{
 		FILE *fh = fopen(file, "w");

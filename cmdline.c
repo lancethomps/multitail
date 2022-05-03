@@ -79,12 +79,12 @@ void add_redir_to_socket(char filtered, char *prio, char *fac, char *address, re
 	char *colon = strchr(local_address, ':');
 	int prio_nr = -1, fac_nr = -1;
 	int loop;
-    char* node;
-    char* service;
-    struct addrinfo hints;
-    struct addrinfo* result;
-    struct addrinfo* rp;
-    int s, sfd = -1;
+	char* node;
+	char* service;
+	struct addrinfo hints;
+	struct addrinfo* result;
+	struct addrinfo* rp;
+	int s, sfd = -1;
 
 	*predir = (redirect_t *)myrealloc(*predir, (*n_redirect + 1) * sizeof(redirect_t));
 	memset(&(*predir)[*n_redirect], 0x00, sizeof(redirect_t));
@@ -124,9 +124,9 @@ void add_redir_to_socket(char filtered, char *prio, char *fac, char *address, re
 	{
 		sfd = socket(rp -> ai_family, rp -> ai_socktype, rp -> ai_protocol);
 		if (sfd == -1)
-		    continue;
+			continue;
 		if (connect(sfd, rp -> ai_addr, rp -> ai_addrlen) != -1)
-		    break;
+			break;
 		close(sfd);
 	}
 
@@ -309,6 +309,7 @@ int argv_color_settings(char *mode, char *pars[], char *allcolor, char *curcolor
 {
 	int n_pars_used = 0;
 	char cur_mode = mode[2];
+	LOG("argv_color_settings: cur_mode=%s\n", cur_mode);
 
 	*doall = 0;
 	if (mode[1] == 'C')
@@ -363,7 +364,7 @@ int argv_color_settings(char *mode, char *pars[], char *allcolor, char *curcolor
 	}
 	else if (cur_mode == 0x00)	/* use complete line for coloring */
 	{
-		cur_mode = 'm';
+		cur_mode = 'n';
 	}
 	else
 	{
@@ -862,11 +863,11 @@ void do_commandline(int argc, char *argv[])
 			}
 
 			if (strcmp(argv[loop], "-L") == 0  ||
-			    strcmp(argv[loop], "-I") == 0  ||
-			    strcmp(argv[loop], "-Iw") == 0 ||
-			    strcmp(argv[loop], "-J") == 0  ||
-			    strcmp(argv[loop], "--Listen") == 0 ||
-			    merge_all)
+				strcmp(argv[loop], "-I") == 0  ||
+				strcmp(argv[loop], "-Iw") == 0 ||
+				strcmp(argv[loop], "-J") == 0  ||
+				strcmp(argv[loop], "--Listen") == 0 ||
+				merge_all)
 			{
 				is_sub = 1;
 
@@ -1031,6 +1032,7 @@ void do_commandline(int argc, char *argv[])
 			cur -> cdef.alt_col_cdev1 = alt_col_cdev1;
 			cur -> cdef.alt_col_cdev2 = alt_col_cdev2;
 			cur -> cdef.syslog_noreverse = syslog_noreverse;
+			LOG("curcolor=%c allcolor=%c\n", curcolor, allcolor);
 			if (curcolor != 'n' && curcolor != 0)
 			{
 				cur -> cdef.colorize = curcolor;
@@ -1039,6 +1041,7 @@ void do_commandline(int argc, char *argv[])
 			}
 			else
 			{
+				LOG("allcolor=%c default_color_scheme=%d\n", allcolor, default_color_scheme);
 				if (allcolor == 'n' && default_color_scheme != -1)
 				{
 					cur -> cdef.colorize = 'S';

@@ -30,7 +30,7 @@
 #define AMOUNT_STR_LEN		(3 + 2 + 1)
 
 #ifndef __GNUC__
-        #define __PRETTY_FUNCTION__	"(unknown)"
+	#define __PRETTY_FUNCTION__	"(unknown)"
 	#define USE_IF_SET(x, y)		((x)?(x):(y))
 #else
 	#define USE_IF_SET(x, y)		((x)?:(y))
@@ -64,9 +64,9 @@ typedef enum { SCHEME_TYPE_EDIT = 0, SCHEME_TYPE_FILTER } filter_edit_scheme_t;
 	#include <ncursesw/ncurses.h>
 #else
 	#if defined(__APPLE__)
-        #include <ncurses.h>
-        #include <panel.h>
-    #elif defined(sun) || defined(__sun) || defined(scoos) || defined(_HPUX_SOURCE) || defined(AIX) || defined(__CYGWIN__)
+		#include <ncurses.h>
+		#include <panel.h>
+	#elif defined(sun) || defined(__sun) || defined(scoos) || defined(_HPUX_SOURCE) || defined(AIX) || defined(__CYGWIN__)
 		#include <ncurses/panel.h>
 		#include <ncurses/ncurses.h>
 	#else
@@ -88,7 +88,7 @@ typedef enum { SCHEME_TYPE_EDIT = 0, SCHEME_TYPE_FILTER } filter_edit_scheme_t;
 	#define strtoll(x, y, z)	strtol(x, y, z)
 #endif
 #ifndef atoll
-      #define atoll(a) strtoll((a), (char **)NULL, 10)
+	#define atoll(a) strtoll((a), (char **)NULL, 10)
 #endif
 
 /* Tru64 workaround */
@@ -154,9 +154,9 @@ typedef struct
 
 typedef struct
 {
-        char *regex_str;
-        regex_t regex;
-        char invert_regex;
+	char *regex_str;
+	regex_t regex;
+	char invert_regex;
 	char use_regex;
 
 	int match_count;

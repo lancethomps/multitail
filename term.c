@@ -61,7 +61,7 @@ void wrong_key(void)
 void draw_border(NEWWIN *mywin)
 {
 	wborder(mywin -> win, box_left_side, box_right_side, box_top_side, box_bottom_side,
-			      box_top_left_hand_corner, box_top_right_hand_corner, box_bottom_left_hand_corner, box_bottom_right_hand_corner);
+				  box_top_left_hand_corner, box_top_right_hand_corner, box_bottom_left_hand_corner, box_bottom_right_hand_corner);
 }
 
 int ask_yes_no(int what_help, NEWWIN *popup)
@@ -463,6 +463,12 @@ char * edit_string(NEWWIN *win, int win_y, int win_x, int win_width, int max_wid
 NEWWIN * create_popup(int n_lines, int n_colls)
 {
 	NEWWIN *newwin;
+
+	if (n_lines > max_y)
+		n_lines = max_y;
+	if (n_colls > max_x)
+		n_colls = max_x;
+
 	int ocols  = (max_x/2) - (n_colls/2);
 	int olines = (max_y/2) - (n_lines/2);
 
@@ -703,8 +709,8 @@ int find_or_init_colorpair(int fgcolor, int bgcolor, char ignore_errors)
 int colorstr_to_nr(char *str)
 {
 	int loop;
-    int err;
-    regex_t regex_is_color;
+	int err;
+	regex_t regex_is_color;
 
 	if (str[0] == 0x00) return -1;
 
@@ -713,24 +719,24 @@ int colorstr_to_nr(char *str)
 		if (color_names[loop] && strcmp(color_names[loop], str) == 0)
 			return loop;
 	}
-    
-    err = regcomp(&regex_is_color, "^[[:digit:]]{1,3}$", REG_EXTENDED);
-    if (err == 0) {
-        int match_color;    
-        match_color = regexec(&regex_is_color, str, 0, NULL, 0);
-        regfree(&regex_is_color);
 
-        if (match_color == 0) {
-            int color;
-            char *end;
-            color = strtol(str,&end,10);
-            /* prevent the use of more thant 255 colors */            
-            if (color < 255) {
-                return color;
-            }
-        }
-    }
-    
+	err = regcomp(&regex_is_color, "^[[:digit:]]{1,3}$", REG_EXTENDED);
+	if (err == 0) {
+		int match_color;
+		match_color = regexec(&regex_is_color, str, 0, NULL, 0);
+		regfree(&regex_is_color);
+
+		if (match_color == 0) {
+			int color;
+			char *end;
+			color = strtol(str,&end,10);
+			/* prevent the use of more thant 255 colors */
+			if (color < 255) {
+				return color;
+			}
+		}
+	}
+
 	if (use_colors)
 		error_exit(FALSE, FALSE, "'%s' is not recognized as a color\n", str);
 

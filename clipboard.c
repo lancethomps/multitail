@@ -51,7 +51,7 @@ void send_to_clipboard_binary(char *what)
 
 		setsid();
 #ifndef __minix
-                setpgid(0, 0);
+		setpgid(0, 0);
 #endif
 
 		if (execl(clipboard, clipboard, NULL) == -1)

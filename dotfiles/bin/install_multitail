@@ -4,10 +4,101 @@ if ! _SCRIPT_DIR="$(get_script_dir "${BASH_SOURCE[0]}")"; then echo "Error while
 set -o errexit -o errtrace -o nounset
 ##################################################################################################################################################
 
+################################################################### USAGE ########################################################################
+_SCRIPT_NAME="$(basename "$0")"
+
+function _usage() {
+  local SYNOP_INDENT
+  SYNOP_INDENT="$(head -c "$(echo -n "${_SCRIPT_NAME}" | wc -c)" </dev/zero | tr '\0' " ")"
+
+  cat <<EOF
+NAME
+       ${_SCRIPT_NAME}
+
+SYNOPSIS
+       ${_SCRIPT_NAME} [--debug-log] [--temp | --uninstall]
+       ${SYNOP_INDENT} [--help] [--debug] [--verbose]
+
+EXAMPLES
+       ${_SCRIPT_NAME}
+EOF
+}
+##################################################################################################################################################
+
+################################################################# SCRIPTARGS #####################################################################
+while test $# -gt 0; do
+  case "$1" in
+    -h | --help)
+      _usage
+      exit 0
+      ;;
+    --debug)
+      export debug_mode=true
+      shift
+      ;;
+    --verbose)
+      export verbose=true
+      shift
+      ;;
+    --debug-log)
+      debug_log=true
+      shift
+      ;;
+    --temp)
+      temp=true
+      shift
+      ;;
+    --uninstall)
+      uninstall=true
+      shift
+      ;;
+    *)
+      echo "Unknown option: $1"
+      _usage
+      exit 1
+      ;;
+  esac
+done
+##################################################################################################################################################
+
+function run_make() {
+	echo "make $*"
+	echo "--------------------------------------------------------------"
+	make "$@"
+}
+
+function install_temp() {
+  local DESTDIR
+
+  DESTDIR="$(pwd)/tmp"
+  mkdir -pv "${DESTDIR}/usr/local/bin" "${DESTDIR}/usr/local/share/man/man1" "${DESTDIR}/usr/local/etc" "${DESTDIR}/usr/local/share/doc"
+
+  DESTDIR="$DESTDIR" run_make install
+  run_make clean
+}
+
+function uninstall() {
+  run_make uninstall
+}
+
 function main() {
   cd "${_SCRIPT_DIR}/../.."
-  make clean
-  make -f makefile.macosx install
+
+  run_make clean
+
+  if test "${debug_log-}" = "true"; then
+    # bashsupport disable=BP2001
+    export DEBUG='-D_DEBUG'
+  fi
+
+  if test "${temp-}" = "true"; then
+    install_temp
+  elif test "${uninstall-}" = "true"; then
+    uninstall
+  else
+    run_make install
+    run_make clean
+  fi
 }
 
 main "$@"
