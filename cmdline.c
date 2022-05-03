@@ -474,7 +474,6 @@ void do_commandline(int argc, char *argv[])
 	int_array_t cur_color_schemes = { NULL, 0, 0 };
 	myattr_t cdef = { -1, -1 };
 	int window_height = -1;
-	int initial_n_lines_tail = min_n_bufferlines;
 	char *win_title = NULL;
 	term_t cur_term_emul = TERM_IGNORE;
 	strip_t *pstrip = NULL;
@@ -519,6 +518,8 @@ void do_commandline(int argc, char *argv[])
 	cur_line_wrap = default_linewrap;
 	cur_line_wrap_offset = default_line_wrap_offset;
 	follow_filename = default_follow_filename;
+	int initial_n_lines_tail = min_n_bufferlines;
+	LOG("initial_n_lines_tail=%d\n", initial_n_lines_tail);
 
 	/* parse commandline */
 	for(loop=1; loop<argc; loop++)

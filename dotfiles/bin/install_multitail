@@ -16,7 +16,7 @@ NAME
        ${_SCRIPT_NAME}
 
 SYNOPSIS
-       ${_SCRIPT_NAME} [--clean] [--debug-log] [--temp | --uninstall]
+       ${_SCRIPT_NAME} [--no-clean] [--debug-log] [--temp | --uninstall]
        ${SYNOP_INDENT} [--help] [--debug] [--verbose]
 
 EXAMPLES
@@ -40,12 +40,12 @@ while test $# -gt 0; do
       export verbose=true
       shift
       ;;
-    --clean)
-      clean=true
-      shift
-      ;;
     --debug-log)
       debug_log=true
+      shift
+      ;;
+    --no-clean)
+      no_clean=true
       shift
       ;;
     --temp)
@@ -72,11 +72,11 @@ function run_make() {
 }
 
 function maybe_clean() {
-  if test "${clean-}" = "true"; then
-    run_make clean
+  if test "${no_clean-}" = "true"; then
+    return 0
   fi
 
-  return 0
+  run_make clean
 }
 
 function install_temp() {
@@ -86,6 +86,7 @@ function install_temp() {
   mkdir -pv "${DESTDIR}/usr/local/bin" "${DESTDIR}/usr/local/share/man/man1" "${DESTDIR}/usr/local/etc" "${DESTDIR}/usr/local/share/doc"
 
   DESTDIR="$DESTDIR" run_make install
+  maybe_clean
 }
 
 function uninstall() {
@@ -108,6 +109,7 @@ function main() {
     uninstall
   else
     run_make install
+    maybe_clean
   fi
 }
 

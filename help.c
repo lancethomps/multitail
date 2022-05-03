@@ -37,7 +37,6 @@ char *help_main_menu[] = {
 		" *_f_*            enter/edit in line filter regexps",
 		" *_c_*            set/change colors (only works if your terminal supports colors)",
 		" *_C_*            edit the r/g/b components of a color",
-		" *_b_*            scrollback in the buffer of a window",
 		" *_v_*            toggle vertical split",
 		" *_0_*...*_9_*        set a mark in a window so that you can easily see what has changed since the last time you looked",
 		" *_R_*            restart a window",

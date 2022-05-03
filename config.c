@@ -680,11 +680,13 @@ void set_markerline_timestamp(int linenr, char *cmd, char *par)
 void set_global_default_nlines(int linenr, char *cmd, char *par)
 {
 	default_maxnlines = atoi(par);
+	LOG("default_maxnlines=%d\n", default_maxnlines);
 }
 
 void set_global_default_nkb(int linenr, char *cmd, char *par)
 {
 	default_maxbytes = kb_str_to_value(cmd, par);
+	LOG("default_maxbytes=%d\n", default_maxbytes);
 }
 
 void set_default_nlines(int linenr, char *cmd, char *par)
