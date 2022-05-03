@@ -875,6 +875,7 @@ void set_searchhistory_file(int linenr, char *cmd, char *par)
 	else
 	{
 		search_h.history_file = myrealpath(par);
+		LOG("search_h.history_file=%s\n", search_h.history_file);
 	}
 }
 
@@ -903,6 +904,7 @@ void set_cmdfile_history_file(int linenr, char *cmd, char *par)
 	else
 	{
 		cmdfile_h.history_file = myrealpath(par);
+		LOG("cmdfile_h.history_file=%s\n", cmdfile_h.history_file);
 	}
 }
 

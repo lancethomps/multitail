@@ -16,7 +16,7 @@ NAME
        ${_SCRIPT_NAME}
 
 SYNOPSIS
-       ${_SCRIPT_NAME} [--no-clean] [--debug-log] [--temp | --uninstall]
+       ${_SCRIPT_NAME} [--debug-log | --with-debug-log-install] [--no-clean] [--temp | --uninstall]
        ${SYNOP_INDENT} [--help] [--debug] [--verbose]
 
 EXAMPLES
@@ -42,6 +42,7 @@ while test $# -gt 0; do
       ;;
     --debug-log)
       debug_log=true
+      no_clean=false
       shift
       ;;
     --no-clean)
@@ -54,6 +55,11 @@ while test $# -gt 0; do
       ;;
     --uninstall)
       uninstall=true
+      shift
+      ;;
+    --with-debug-log-install)
+      with_debug_log_install=true
+      no_clean=false
       shift
       ;;
     *)
@@ -79,6 +85,19 @@ function maybe_clean() {
   run_make clean
 }
 
+function set_debug_log_env_var() {
+  # bashsupport disable=BP2001
+  export DEBUG='-D_DEBUG'
+}
+
+function install_debug_log_version() {
+  run_make clean
+  set_debug_log_env_var
+  run_make multitail
+  cp -fv multitail /usr/local/bin/multitail_debug
+  run_make clean
+}
+
 function install_temp() {
   local DESTDIR
 
@@ -96,20 +115,25 @@ function uninstall() {
 function main() {
   cd "${_SCRIPT_DIR}/../.."
 
-  maybe_clean
-
   if test "${debug_log-}" = "true"; then
-    # bashsupport disable=BP2001
-    export DEBUG='-D_DEBUG'
+    set_debug_log_env_var
   fi
 
   if test "${temp-}" = "true"; then
+    maybe_clean
     install_temp
   elif test "${uninstall-}" = "true"; then
     uninstall
+  elif test "${debug_log-}" = "true"; then
+    install_debug_log_version
   else
-    run_make install
     maybe_clean
+    run_make install
+    if test "${with_debug_log_install-}" = "true"; then
+      install_debug_log_version
+    else
+      maybe_clean
+    fi
   fi
 }
 

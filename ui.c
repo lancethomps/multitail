@@ -62,7 +62,7 @@ void error_popup(char *title, int help, char *message, ...)
 void edit_color(int index)
 {
 	int example_color = COLOR_RED;
-	NEWWIN *mywin = create_popup(lines_big, colls_big);
+	NEWWIN *mywin = create_popup(lines_lg, colls_lg);
 	int colorbar = find_or_init_colorpair(example_color, example_color, 1);
 	short old_r, old_g, old_b;
 	double scale = 255.0 / 1000.0;
@@ -573,8 +573,8 @@ int select_schemes(void *schemes_in, int n_schemes_in, scheme_t tscheme, int_arr
 	int loop, cur_offset = 0, cur_line = 0;
 	char *selected_schemes = NULL;
 	int c = 0;
-	int win_lines = lines_big;
-	int win_colls = colls_big;
+	int win_lines = lines_lg;
+	int win_colls = colls_lg;
 	int n_display = win_lines - 4;
 
 	if (n_schemes_in == 0)
@@ -1440,9 +1440,9 @@ void list_keybindings(void)
 	NEWWIN *mywin;
 	int prevpos = -1, curpos = 0;
 
-	int win_lines = lines_med;
+	int win_lines = lines_md;
 	int lines_loop = win_lines - 3;
-	mywin = create_popup(win_lines, colls_med);
+	mywin = create_popup(win_lines, colls_md);
 
 	for(;;)
 	{
@@ -2879,7 +2879,7 @@ void draw_marker_line(NEWWIN *win, char *string, proginfo *marker_type)
 void search_in_all_windows(void)
 {
 	char *find;
-	int win_colls = colls_med;
+	int win_colls = colls_md;
 	NEWWIN *mywin = create_popup(8, win_colls);
 	mybool_t case_insensitive = re_case_insensitive;
 
@@ -2900,7 +2900,7 @@ void search_in_all_windows(void)
 void highlight_in_all_windows(void)
 {
 	char *find;
-	int win_colls = colls_med;
+	int win_colls = colls_md;
 	NEWWIN *mywin = create_popup(5, win_colls);
 	mybool_t case_insensitive = re_case_insensitive;
 
@@ -2933,7 +2933,7 @@ void highlight_in_all_windows(void)
 
 void toggle_regexp_case_insensitive(void)
 {
-	NEWWIN *mywin = create_popup(6, colls_med);
+	NEWWIN *mywin = create_popup(6, colls_md);
 
 	re_case_insensitive = !re_case_insensitive;
 
@@ -3012,7 +3012,7 @@ void clear_all_buffers(void)
 
 void ask_case_insensitive(mybool_t *pcase_insensitive)
 {
-	NEWWIN *mywin = create_popup(6, colls_med);
+	NEWWIN *mywin = create_popup(6, colls_md);
 
 	mvwprintw(mywin -> win, 2, 2, "Search case insensitive?");
 	mvwprintw(mywin -> win, 3, 12, "(Y/N)");

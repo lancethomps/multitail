@@ -63,12 +63,21 @@
 #include "cmdline.h"
 
 /* #define KEYB_DEBUG */
+char *LOG_FILE = "multitail.log";
+
+void start_log(void)
+{
+#ifdef _DEBUG
+	LOG_FILE = myrealpath("~/Library/Logs/multitail.log");
+	printf("Writing logs to %s", LOG_FILE);
+#endif
+}
 
 void LOG(char *s, ...)
 {
 #ifdef _DEBUG
 	va_list ap;
-	FILE *fh = fopen("log.log", "a+");
+	FILE *fh = fopen(LOG_FILE, "a+");
 	if (!fh)
 	{
 		endwin();
@@ -818,7 +827,7 @@ void color_print(int f_index, NEWWIN *win, proginfo *cur, char *string, regmatch
 	}
 
 	/* add a label */
-	LOG("Label\n");
+	// LOG("Label\n");
 	if (cur -> label != NULL && (cur -> label)[0])
 	{
 		mx -= wprintw(win -> win, "%s", cur -> label);
@@ -852,7 +861,7 @@ void color_print(int f_index, NEWWIN *win, proginfo *cur, char *string, regmatch
 	}
 
 	/* select start and end of string to display */
-	LOG("lwo: %d, mx: %d, ps: %d, pe: %d, de: %d\n", cur -> line_wrap_offset, mx, prt_start, prt_end, disp_end);
+	// LOG("lwo: %d, mx: %d, ps: %d, pe: %d, de: %d\n", cur -> line_wrap_offset, mx, prt_start, prt_end, disp_end);
 	select_display_start_and_end(USE_IF_SET(use_string, string), force_to_winwidth == MY_TRUE?'l':cur -> line_wrap, cur -> line_wrap_offset, mx, &prt_start, &prt_end, &disp_end);
 
 	if (prt_start == 0 && start_at_offset > 0)
@@ -862,8 +871,8 @@ void color_print(int f_index, NEWWIN *win, proginfo *cur, char *string, regmatch
 	}
 
 	/* and display on terminal */
-	LOG("ps: %d, pe: %d, de: %d\n", prt_start, prt_end, disp_end);
-	LOG("%s\n", USE_IF_SET(use_string, string));
+	// LOG("ps: %d, pe: %d, de: %d\n", prt_start, prt_end, disp_end);
+	// LOG("%s\n", USE_IF_SET(use_string, string));
 	do_color_print(cur, USE_IF_SET(use_string, string), prt_start, prt_end, disp_end, cmatches, n_cmatches, has_merge_colors, reverse, matches, matching_regex, use_regex, win);
 
 	myattr_off(win, cdev);
@@ -2744,6 +2753,7 @@ int main(int argc, char *argv[])
 	 * setlocale(LC_ALL, ""); */
 
 	time(&mt_started);
+	start_log();
 
 	set_signal(SIGTERM, signal_handler, "SIGTERM");
 	set_signal(SIGINT,  signal_handler, "SIGINT" );

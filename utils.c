@@ -1032,7 +1032,7 @@ char *myrealpath(char *in)
 	else
 	{
 		home = gethome(NULL);
-		pin = in + 1;
+		pin = in + 2;
 	}
 
 	if (!home)

@@ -122,6 +122,12 @@ int start_tail(char *filename, char retry_open, char follow_filename, int initia
 		pars[npars++] = filename;
 		pars[npars] = NULL;
 
+		LOG("Starting tail process:");
+		int loop;
+		for(loop=0; loop<npars; loop++)
+			LOG(" %s", pars[loop]);
+		LOG("\n");
+
 		/* run tail! */
 		if (-1 == execvp(pars[0], pars)) error_exit(TRUE, FALSE, "Error while starting process %s.\n", pars[0]);
 

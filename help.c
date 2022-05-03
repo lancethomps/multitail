@@ -824,8 +824,8 @@ void show_help(int what_help)
 
 	if (php)
 	{
-		int win_lines = min(lines_big, max_y - 10);
-		int win_colls = min(colls_big, max_x - 10);
+		int win_lines = min(lines_lg, max_y - 10);
+		int win_colls = min(colls_lg, max_x - 10);
 		NEWWIN *winb = create_popup(win_lines + 2, win_colls + 4);
 		NEWWIN *win  = create_popup(win_lines    , win_colls    );
 
