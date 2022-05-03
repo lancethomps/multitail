@@ -1138,7 +1138,8 @@ int edit_regexp(void)
 		return 0;
 
 	/* create window */
-	mywin = create_popup(23, 70);
+	int win_colls = 70;
+	mywin = create_popup(23, win_colls);
 
 	for(;;)
 	{
@@ -1439,7 +1440,9 @@ void list_keybindings(void)
 	NEWWIN *mywin;
 	int prevpos = -1, curpos = 0;
 
-	mywin = create_popup(20, 40);
+	int win_lines = lines_med;
+	int lines_loop = win_lines - 3;
+	mywin = create_popup(win_lines, colls_med);
 
 	for(;;)
 	{
@@ -1453,7 +1456,7 @@ void list_keybindings(void)
 
 			win_header(mywin, "Keybindings");
 
-			for(loop=0; loop<17; loop++)
+			for(loop=0; loop<lines_loop; loop++)
 			{
 				if ((loop + curpos) >= n_keybindings)
 					break;
@@ -2930,11 +2933,11 @@ void highlight_in_all_windows(void)
 
 void toggle_regexp_case_insensitive(void)
 {
-	NEWWIN *mywin = create_popup(6, 40);
+	NEWWIN *mywin = create_popup(6, colls_med);
 
 	re_case_insensitive = !re_case_insensitive;
 
-	mvwprintw(mywin -> win, 2, 2, "Default searche case now is %s.", re_case_insensitive == MY_TRUE?"insensitive":"sensitive");
+	mvwprintw(mywin -> win, 2, 2, "Default search case now is %s.", re_case_insensitive == MY_TRUE?"insensitive":"sensitive");
 	escape_print(mywin, 4, 2, "_Press any key to exit this screen_");
 
 	mydoupdate();
@@ -3009,7 +3012,7 @@ void clear_all_buffers(void)
 
 void ask_case_insensitive(mybool_t *pcase_insensitive)
 {
-	NEWWIN *mywin = create_popup(6, 40);
+	NEWWIN *mywin = create_popup(6, colls_med);
 
 	mvwprintw(mywin -> win, 2, 2, "Search case insensitive?");
 	mvwprintw(mywin -> win, 3, 12, "(Y/N)");
