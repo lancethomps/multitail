@@ -1,6 +1,7 @@
 include version
 
-CONFIG_FILE=$(DESTDIR)/usr/local/etc/multitail.conf
+PREFIX:=$(shell brew --prefix)
+CONFIG_FILE=$(DESTDIR)$(PREFIX)/etc/multitail.conf
 
 #DEBUG?=#XXX -g -D_DEBUG #-pg -Wpedantic # -pg #-fprofile-arcs
 LDFLAGS=-lpanel -lm $(DEBUG)
@@ -19,17 +20,17 @@ multitail: $(OBJS)
 	$(CC) -Wall -W $(OBJS) $(NCURSES_LIB) $(LDFLAGS) -o multitail
 
 install: multitail
-	mkdir -p $(DESTDIR)/usr/local/share/doc/multitail-$(VERSION)
-	cp -v multitail $(DESTDIR)/usr/local/bin
-	cp -v multitail.1 $(DESTDIR)/usr/local/share/man/man1/multitail.1
-	cp -v multitail.conf $(DESTDIR)/usr/local/etc/multitail.conf
-	cp -v *.md manual.html $(DESTDIR)/usr/local/share/doc/multitail-$(VERSION)
+	mkdir -p $(DESTDIR)$(PREFIX)/share/doc/multitail-$(VERSION)
+	cp -v multitail $(DESTDIR)$(PREFIX)/bin
+	cp -v multitail.1 $(DESTDIR)$(PREFIX)/share/man/man1/multitail.1
+	cp -v multitail.conf $(DESTDIR)$(PREFIX)/etc/multitail.conf
+	cp -v *.md manual.html $(DESTDIR)$(PREFIX)/share/doc/multitail-$(VERSION)
 
 uninstall: clean
-	rm -f $(DESTDIR)/usr/local/bin/multitail
-	rm -f $(DESTDIR)/usr/local/share/man/man1/multitail.1
-	rm -f $(DESTDIR)/usr/local/etc/multitail.conf
-	rm -rf $(DESTDIR)/usr/local/share/doc/multitail
+	rm -f $(DESTDIR)$(PREFIX)/bin/multitail
+	rm -f $(DESTDIR)$(PREFIX)/share/man/man1/multitail.1
+	rm -f $(DESTDIR)$(PREFIX)/etc/multitail.conf
+	rm -rf $(DESTDIR)$(PREFIX)/share/doc/multitail
 
 clean:
 	rm -f $(OBJS) multitail core

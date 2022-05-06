@@ -94,7 +94,7 @@ function install_debug_log_version() {
   run_make clean
   set_debug_log_env_var
   run_make multitail
-  cp -fv multitail /usr/local/bin/multitail_debug
+  cp -fv multitail "$(brew --prefix)/bin/multitail_debug"
   run_make clean
 }
 
@@ -102,7 +102,7 @@ function install_temp() {
   local DESTDIR
 
   DESTDIR="$(pwd)/tmp"
-  mkdir -pv "${DESTDIR}/usr/local/bin" "${DESTDIR}/usr/local/share/man/man1" "${DESTDIR}/usr/local/etc" "${DESTDIR}/usr/local/share/doc"
+  mkdir -pv "${DESTDIR}$(brew --prefix)/bin" "${DESTDIR}$(brew --prefix)/share/man/man1" "${DESTDIR}$(brew --prefix)/etc" "${DESTDIR}$(brew --prefix)/share/doc"
 
   DESTDIR="$DESTDIR" run_make install
   maybe_clean

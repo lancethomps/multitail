@@ -10,7 +10,7 @@ DEBUG?=#XXX -g -D_DEBUG ###-pg -Wpedantic ## -pg #-fprofile-arcs
 
 UTF8_SUPPORT:=yes
 DESTDIR?=
-PREFIX=/usr/local
+PREFIX:=$(shell brew --prefix)
 
 CONFIG_FILE=$(DESTDIR)$(PREFIX)/etc/multitail.conf
 INSTALLED_BIN_FILE=$(DESTDIR)$(PREFIX)/bin/multitail
