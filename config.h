@@ -1,8 +1,8 @@
 typedef struct
 {
-	char *config_keyword;
+  char *config_keyword;
 
-	void (*function)(int, char *, char *);
+  void (*function)(int, char *, char *);
 } config_file_keyword;
 
 int config_file_entry(int dummy, char *line);
