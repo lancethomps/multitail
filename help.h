@@ -2,8 +2,8 @@
 
 typedef struct
 {
-  int nr;
-  char **text;
+	int nr;
+	char **text;
 } help_t;
 
 #define HELP_MAIN_MENU    0

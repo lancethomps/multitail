@@ -173,10 +173,10 @@ char *facilities[24] = { "kern", "user", "mail", "daemon", "auth", "syslog", "lp
 
 void set_do_refresh(char val)
 {
-  do_refresh = val;
+	do_refresh = val;
 }
 
 char get_do_refresh()
 {
-  return do_refresh;
+	return do_refresh;
 }
