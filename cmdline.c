@@ -363,7 +363,7 @@ int argv_color_settings(char *mode, char *pars[], char *allcolor, char *curcolor
 	}
 	else if (cur_mode == 0x00)	/* use complete line for coloring */
 	{
-		cur_mode = 'm';
+		cur_mode = 'n';
 	}
 	else
 	{

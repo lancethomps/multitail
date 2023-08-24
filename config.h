@@ -8,3 +8,4 @@ typedef struct
 int config_file_entry(int dummy, char *line);
 void do_load_config(int dummynr, char *dummy, char *file);
 char load_configfile(char *config_file);
+void do_default_color_scheme(void);

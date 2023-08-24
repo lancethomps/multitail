@@ -1085,13 +1085,15 @@ void show_help(int what_help)
 
 	if (php)
 	{
-		NEWWIN *winb = create_popup(15 + 2, 50 + 4);
-		NEWWIN *win  = create_popup(15    , 50    );
+		int win_lines = min(lines_lg, max_y - 10);
+		int win_colls = min(colls_lg, max_x - 10);
+		NEWWIN *winb = create_popup(win_lines + 2, win_colls + 4);
+		NEWWIN *win  = create_popup(win_lines    , win_colls    );
 
 		while(php -> text[line_cnt]) line_cnt++;
 
 		wattron(winb -> win, A_STANDOUT);
-		if (line_cnt > 15)
+		if (line_cnt > win_lines)
 			mvwprintw(winb -> win, 0, 2, "Use cursor UP/DOWN to scroll, ctrl+g to exit");
 		else
 			mvwprintw(winb -> win, 0, 2, "Press ctrl+g to exit");
@@ -1107,7 +1109,7 @@ void show_help(int what_help)
 				int loop;
 
 				werase(win -> win);
-				for(loop=pos; loop<min(pos + 15, line_cnt); loop++)
+				for(loop=pos; loop<min(pos + win_lines, line_cnt); loop++)
 				{
 					escape_print(win, loop - pos, 0, help[index].text[loop]);
 				}
@@ -1127,13 +1129,13 @@ void show_help(int what_help)
 			{
 				pos++;
 			}
-			else if (c == KEY_PPAGE && pos >= 15)
+			else if (c == KEY_PPAGE && pos >= win_lines)
 			{
-				pos -= 15;
+				pos -= win_lines;
 			}
-			else if ((c == KEY_NPAGE || c == ' ') && (pos + 15) < (line_cnt - 1))
+			else if ((c == KEY_NPAGE || c == ' ') && (pos + win_lines) < (line_cnt - 1))
 			{
-				pos += 15;
+				pos += win_lines;
 			}
 			else if (c == KEY_HOME && pos > 0)
 			{

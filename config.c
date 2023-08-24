@@ -645,6 +645,11 @@ void set_splitline_attrs(int linenr, char *cmd, char *par)
 	splitline_attrs = parse_attributes(par);
 }
 
+void set_include_config(int linenr, char *cmd, char *par)
+{
+	do_load_config(linenr, cmd, myrealpath(par));
+}
+
 void set_inverse_attrs(int linenr, char *cmd, char *par)
 {
 	inverse_attrs = attrstr_to_nr(par);
@@ -1027,7 +1032,7 @@ void set_scrollback_search_new_window(int linenr, char *cmd, char *par)
 
 void set_gnu_tail(int linenr, char *cmd, char *par)
 {
-        gnu_tail = config_yes_no(par);
+				gnu_tail = config_yes_no(par);
 }
 
 config_file_keyword cf_entries[] = {
@@ -1083,7 +1088,7 @@ config_file_keyword cf_entries[] = {
 	{ "gnu_tail", set_gnu_tail },
 	{ "idleline_char", set_idleline_char },
 	{ "idleline_color", set_idleline_color },
-	{ "include", do_load_config },
+	{ "include", set_include_config },
 	{ "inverse", set_inverse_attrs },
 	{ "line_ts_format", set_line_ts_format },
 	{ "map_delete_as_backspace", set_map_delete_as_backspace },
@@ -1194,6 +1199,17 @@ int sort_colorschemes_compare(const void *a, const void *b)
 	return strcmp(pa -> name, pb -> name);
 }
 
+void do_default_color_scheme(void)
+{
+	if (defaultcscheme)
+	{
+		default_color_scheme = find_colorscheme(defaultcscheme);
+
+		if (default_color_scheme == -1)
+			error_exit(FALSE, FALSE, "Default color scheme '%s' is not defined. Please check the MultiTail configuration file %s.\n", defaultcscheme, config_file);
+	}
+}
+
 /* returns the default color scheme or -1 if none */
 void do_load_config(int dummynr, char *dummy, char *file)
 {
@@ -1233,6 +1249,7 @@ void do_load_config(int dummynr, char *dummy, char *file)
 			error_exit(FALSE, FALSE, "Configuration parameter '%s' is unknown (file: %s, line: %d).\n", read_buffer, file, linenr);
 	}
 	fclose(fh);
+	do_default_color_scheme();
 
 	if (!sorted)
 	{

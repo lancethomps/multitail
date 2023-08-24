@@ -1,0 +1,7 @@
+AllowShortIfStatementsOnASingleLine: false
+BreakBeforeBraces: Allman
+ColumnLimit: 0
+IndentCaseLabels: false
+IndentWidth: 8
+SpaceBeforeRangeBasedForLoopColon: false
+UseTab: Always

@@ -1,6 +1,6 @@
 include version
 
-CONFIG_FILE=$(DESTDIR)/usr/local/etc/multitail.conf
+CONFIG_FILE=$(DESTDIR)/etc/multitail.conf
 
 DEBUG:=#XXX -g -D_DEBUG #-pg -Wpedantic # -pg #-fprofile-arcs
 LDFLAGS=-lpanel -lm $(DEBUG)
@@ -19,15 +19,15 @@ multitail: $(OBJS)
 	$(CC) -Wall -W $(OBJS) $(NCURSES_LIB) $(LDFLAGS) -o multitail
 
 install: multitail
-	cp multitail $(DESTDIR)/usr/local/bin
-	cp multitail.1 $(DESTDIR)/usr/local/share/man/man1/multitail.1
+	cp multitail $(DESTDIR)/bin
+	cp multitail.1 $(DESTDIR)/share/man/man1/multitail.1
 	#
 	### COPIED multitail.conf.new, YOU NEED TO REPLACE THE multitail.conf
 	### YOURSELF WITH THE NEW FILE
 	#
-	cp multitail.conf $(DESTDIR)/usr/local/etc/multitail.conf.new
-	mkdir -p $(DESTDIR)/usr/local/share/doc/multitail-$(VERSION)
-	cp *.txt INSTALL manual.html $(DESTDIR)/usr/local/share/doc/multitail-$(VERSION)
+	cp multitail.conf $(DESTDIR)/etc/multitail.conf
+	mkdir -p $(DESTDIR)/share/doc/multitail-$(VERSION)
+	cp *.txt INSTALL manual.html $(DESTDIR)/share/doc/multitail-$(VERSION)
 	#
 	# +-=-------------------------------------------------------------=-+
 	# | There's a mailinglist!                                          |
@@ -40,9 +40,9 @@ install: multitail
 	# http://www.vanheusden.com/wishlist.php
 
 uninstall: clean
-	rm -f $(DESTDIR)/usr/local/bin/multitail
-	rm -f $(DESTDIR)/usr/local/share/man/man1/multitail.1
-	rm -rf $(DESTDIR)/usr/local/share/doc/multitail-$(VERSION)
+	rm -f $(DESTDIR)/bin/multitail
+	rm -f $(DESTDIR)/share/man/man1/multitail.1
+	rm -rf $(DESTDIR)/share/doc/multitail-$(VERSION)
 
 clean:
 	rm -f $(OBJS) multitail core
